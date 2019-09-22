@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace MyVet.Web.Data.Entities
+namespace HelpMoto.Web.Data.Entities
 {
-    public class Pet
+    public class Motorcycle
     {
         public int Id { get; set; }
 
@@ -17,9 +17,15 @@ namespace MyVet.Web.Data.Entities
         public string ImageUrl { get; set; }
 
         [MaxLength(50, ErrorMessage = "The {0} field can not have more than {1} characters.")]
-        public MotorcycleType MotorcycleType { get; set; }
+        public string Brand { get; set; }
 
-       
+        public MotorcycleType MotorcycleType { get; set; }
+        public Owner Owner { get; set; }
+        public ICollection<PlaceSelling> PlaceSellings { get; set; }
+        public ICollection<CraneService> CraneServices { get; set; }
+        public ICollection<WorkshopService> WorkshopServices { get; set; }
+
+
         [Display(Name = "Shop")]
         [Required(ErrorMessage = "The field {0} is mandatory.")]
         [DataType(DataType.DateTime)]

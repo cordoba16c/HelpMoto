@@ -41,5 +41,10 @@ namespace HelpMoto.Web.Data.Entities
 
         [Display(Name = "Owner")]
         public string FullNameWithDocument => $"{FirstName} {LastName} - {Document}";
+
+        public ICollection<Motorcycle> Motorcycles { get; set; }
+        public ICollection<Concessionaire> Concessionaires { get; set; }
+        public ICollection<ExtraService> ExtraServices { get; set; }
+        public ICollection<PlaceSelling> PlaceSellings { get; set; }
     }
 } 

@@ -1,9 +1,9 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace MyVet.Web.Data.Entities
+namespace HelpMoto.Web.Data.Entities
 {
-    public class History
+    public class ExtraService
     {
         public int Id { get; set; }
 
@@ -24,5 +24,8 @@ namespace MyVet.Web.Data.Entities
         [Display(Name = "Date")]
         [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd HH:mm}", ApplyFormatInEditMode = true)]
         public DateTime DateLocal => Date.ToLocalTime();
+
+        public Owner Owner { get; set; }
+
     }
 }

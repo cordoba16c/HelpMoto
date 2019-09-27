@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using HelpMoto.Web.Data;
+using HelpMoto.Web.Data.Entities;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using HelpMoto.Web.Data;
-using HelpMoto.Web.Data.Entities;
 
 namespace HelpMoto.Web.Controllers
 {

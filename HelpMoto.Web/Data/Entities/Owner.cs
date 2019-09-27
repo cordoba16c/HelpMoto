@@ -1,50 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace HelpMoto.Web.Data.Entities
 {
     public class Owner
     {
-        public int id { get; set; }
+            public int Id { get; set; }
 
-        [Display(Name = "Document")]
-        [MaxLength(20, ErrorMessage = "The {0} field can not have more than {1} characters.")]
-        [Required(ErrorMessage = "The field {0} is mandatory.")]
-        public string Document { get; set; }
+            public User User { get; set; }
 
-        [MaxLength(50, ErrorMessage = "The {0} field can not have more than {1} characters.")]
-        [Required(ErrorMessage = "The field {0} is mandatory.")]
-        public string FirstName { get; set; }
-
-        [Display(Name = "Last Name")]
-        [MaxLength(50, ErrorMessage = "The {0} field can not have more than {1} characters.")]
-        [Required(ErrorMessage = "The field {0} is mandatory.")]
-        public string LastName { get; set; }
-
-        [Display(Name = "Fixed Phone")]
-        [MaxLength(20, ErrorMessage = "The {0} field can not have more than {1} characters.")]
-        public string FixedPhone { get; set; }
-
-        [Display(Name = "Cell Phone")]
-        [MaxLength(20, ErrorMessage = "The {0} field can not have more than {1} characters.")]
-        public string CellPhone { get; set; }
-
-        [MaxLength(100, ErrorMessage = "The {0} field can not have more than {1} characters.")]
-        public string Address { get; set; }
-    
-
-        [Display(Name = "Owner")]
-        public string FullName => $"{FirstName} {LastName}";
-
-        [Display(Name = "Owner")]
-        public string FullNameWithDocument => $"{FirstName} {LastName} - {Document}";
-
-        public ICollection<Motorcycle> Motorcycles { get; set; }
-        public ICollection<Concessionaire> Concessionaires { get; set; }
-        public ICollection<ExtraService> ExtraServices { get; set; }
-        public ICollection<PlaceSelling> PlaceSellings { get; set; }
+            public ICollection<Motorcycle> Motorcycles { get; set; }
+            public ICollection<Concessionaire> Concessionaires { get; set; }
+            public ICollection<ExtraService> ExtraServices { get; set; }
+            public ICollection<PlaceSelling> PlaceSellings { get; set; }
+        }
     }
-} 

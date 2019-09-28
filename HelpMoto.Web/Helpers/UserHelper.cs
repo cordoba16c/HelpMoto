@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace HelpMoto.Web.Helpers
 {
-    public class UserHelper
+    public class UserHelper:IUserHelper
     {
         private readonly UserManager<User> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
@@ -13,8 +13,8 @@ namespace HelpMoto.Web.Helpers
 
         public UserHelper(
             UserManager<User> userManager,
-            RoleManager<IdentityRole> roleManager,
-            SignInManager<User> signInManager)
+            RoleManager<IdentityRole> roleManager)
+           // SignInManager<User> signInManager)
         {
             _userManager = userManager;
             _roleManager = roleManager;

@@ -17,7 +17,7 @@ namespace HelpMoto.Web.Helpers
 
         Task<bool> IsUserInRoleAsync(User user, string roleName);
 
-        Task<SignInResult> LoginAsync(LoginViewModel model);
+       /* Task<SignInResult> LoginAsync(LoginViewModel model);
 
         Task LogoutAsync();
 
@@ -37,6 +37,6 @@ namespace HelpMoto.Web.Helpers
 
         Task<string> GeneratePasswordResetTokenAsync(User user);
 
-        Task<IdentityResult> ResetPasswordAsync(User user, string token, string password);
+        Task<IdentityResult> ResetPasswordAsync(User user, string token, string password);*/
     }
 }

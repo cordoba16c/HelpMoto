@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace HelpMoto.Web.Herlpers
 {
-    interface IUserHelper
+    public interface IUserHelper
     {
         Task<User> GetUserByEmailAsync(string email);
 

@@ -1,4 +1,5 @@
 ﻿using HelpMoto.Web.Data.Entities;
+using HelpMoto.Web.Models;
 using Microsoft.AspNetCore.Identity;
 using System.Threading.Tasks;
 
@@ -8,13 +9,15 @@ namespace HelpMoto.Web.Herlpers
     {
         private readonly UserManager<User> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
-
+        private readonly SignInManager<User> _signInManager;
         public UserHelper(
             UserManager<User> userManager,
-            RoleManager<IdentityRole> roleManager)
+            RoleManager<IdentityRole> roleManager,
+            SignInManager<User> signInManager)
         {
             _userManager = userManager;
             _roleManager = roleManager;
+            _signInManager = signInManager;
         }
 
         public async Task<IdentityResult> AddUserAsync(User user, string password)
@@ -47,6 +50,19 @@ namespace HelpMoto.Web.Herlpers
         public async Task<bool> IsUserInRoleAsync(User user, string roleName)
         {
             return await _userManager.IsInRoleAsync(user, roleName);
+        }
+        public async Task<SignInResult> LoginAsync(LoginViewModel model)
+        {
+            return await _signInManager.PasswordSignInAsync(
+                model.Username,
+                model.Password,
+                model.RememberMe,
+                false);
+        }
+
+        public async Task LogoutAsync()
+        {
+            await _signInManager.SignOutAsync();
         }
     }
 }

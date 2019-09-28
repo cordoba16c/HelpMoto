@@ -1,4 +1,5 @@
 ﻿using HelpMoto.Web.Data.Entities;
+using HelpMoto.Web.Models;
 using Microsoft.AspNetCore.Identity;
 using System.Threading.Tasks;
 
@@ -15,5 +16,8 @@ namespace HelpMoto.Web.Herlpers
         Task AddUserToRoleAsync(User user, string roleName);
 
         Task<bool> IsUserInRoleAsync(User user, string roleName);
+        Task<SignInResult> LoginAsync(LoginViewModel model);
+        Task LogoutAsync();
     }
+
 }

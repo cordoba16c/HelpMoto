@@ -1,4 +1,5 @@
 ﻿using HelpMoto.Web.Data.Entities;
+using HelpMoto.Web.Herlpers;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
@@ -8,6 +9,7 @@ namespace HelpMoto.Web.Data
     public class SeedDb
     {
         private readonly DataContext _context;
+        private readonly IUserHelper _userHelper;
 
         public SeedDb(DataContext context)
         {

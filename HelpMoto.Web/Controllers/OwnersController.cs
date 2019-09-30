@@ -24,8 +24,6 @@ namespace HelpMoto.Web.Controllers
                 .Include(o => o.User)
                 .Include(o => o.Motorcycles));
         }
-
-        // GET: Owners/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -34,6 +32,9 @@ namespace HelpMoto.Web.Controllers
             }
 
             var owner = await _context.Owners
+                .Include(o => o.User)
+                .Include(o => o.Motorcycles)
+                .ThenInclude(m => m.MotorcycleType)
                 .FirstOrDefaultAsync(m => m.id == id);
             if (owner == null)
             {

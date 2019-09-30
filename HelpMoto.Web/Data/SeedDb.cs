@@ -156,8 +156,8 @@ namespace HelpMoto.Web.Data
         {
             if (!_dataContext.MotorcycleTypes.Any())
             {
-                _dataContext.MotorcycleTypes.Add(new MotorcycleType { Name = "Sport" });
-                _dataContext.MotorcycleTypes.Add(new MotorcycleType { Name = "Scooter" });
+                _dataContext.MotorcycleTypes.Add(new MotorcycleType { Name = "SPORT" });
+                _dataContext.MotorcycleTypes.Add(new MotorcycleType { Name = "SCOOTER" });
                 await _dataContext.SaveChangesAsync();
             }
         }

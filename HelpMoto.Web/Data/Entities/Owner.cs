@@ -4,8 +4,7 @@ namespace HelpMoto.Web.Data.Entities
 {
     public class Owner
     {
-        public int id { get; set; }
-
+        public int Id { get; set; }
         public User User { get; set; }
         public ICollection<Motorcycle> Motorcycles { get; set; }
         public ICollection<Concessionaire> Concessionaires { get; set; }

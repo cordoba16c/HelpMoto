@@ -1,10 +1,14 @@
-﻿using HelpMoto.Web.Data;
-using HelpMoto.Web.Data.Entities;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System.Linq;
-using System.Threading.Tasks;
+using HelpMoto.Web.Data;
+using HelpMoto.Web.Data.Entities;
+using HelpMoto.Web.Models;
+using HelpMoto.Web.Herlpers;
 
 namespace HelpMoto.Web.Controllers
 {
@@ -12,10 +16,11 @@ namespace HelpMoto.Web.Controllers
     public class OwnersController : Controller
     {
         private readonly DataContext _context;
-
-        public OwnersController(DataContext context)
+        private readonly IUserHelper _userHelper;
+        public OwnersController(DataContext context, IUserHelper userHelper)
         {
             _context = context;
+            _userHelper = userHelper;
         }
 
         public IActionResult Index()
@@ -35,7 +40,7 @@ namespace HelpMoto.Web.Controllers
                 .Include(o => o.User)
                 .Include(o => o.Motorcycles)
                 .ThenInclude(m => m.MotorcycleType)
-                .FirstOrDefaultAsync(m => m.id == id);
+                .FirstOrDefaultAsync(m => m.Id == id);
             if (owner == null)
             {
                 return NotFound();
@@ -50,22 +55,53 @@ namespace HelpMoto.Web.Controllers
             return View();
         }
 
-        // POST: Owners/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("id")] Owner owner)
+        public async Task<IActionResult> Create(AddUserViewModel model)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(owner);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(owner);
-        }
+                var user = new User
+                {
+                    Address = model.Address,
+                    Document = model.Document,
+                    Email = model.Username,
+                    FirstName = model.FirstName,
+                    LastName = model.LastName,
+                    PhoneNumber = model.PhoneNumber,
+                    UserName = model.Username
+                };
+                var response = await _userHelper.AddUserAsync(user, model.Password);
+                if (response.Succeeded)
+                {
+                    var userInDB = await _userHelper.GetUserByEmailAsync(model.Username);
+                    await _userHelper.AddUserToRoleAsync(userInDB, "Customer");
 
+                    var owner = new Owner
+                    {
+                        Motorcycles = new List<Motorcycle>(),
+                        User = userInDB
+                    };
+
+                    _context.Owners.Add(owner);
+
+                    try
+                    {
+                        await _context.SaveChangesAsync();
+                        return RedirectToAction(nameof(Index));
+                    }
+                    catch (Exception ex)
+                    {
+                        ModelState.AddModelError(string.Empty, ex.ToString());
+                        return View(model);
+                    }
+
+                }
+                ModelState.AddModelError(string.Empty, response.Errors.FirstOrDefault().Description);
+            }
+
+            return View(model);
+        }
         // GET: Owners/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -89,7 +125,7 @@ namespace HelpMoto.Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("id")] Owner owner)
         {
-            if (id != owner.id)
+            if (id != owner.Id)
             {
                 return NotFound();
             }
@@ -103,7 +139,7 @@ namespace HelpMoto.Web.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!OwnerExists(owner.id))
+                    if (!OwnerExists(owner.Id))
                     {
                         return NotFound();
                     }
@@ -126,7 +162,7 @@ namespace HelpMoto.Web.Controllers
             }
 
             var owner = await _context.Owners
-                .FirstOrDefaultAsync(m => m.id == id);
+                .FirstOrDefaultAsync(m => m.Id == id);
             if (owner == null)
             {
                 return NotFound();
@@ -148,7 +184,7 @@ namespace HelpMoto.Web.Controllers
 
         private bool OwnerExists(int id)
         {
-            return _context.Owners.Any(e => e.id == id);
+            return _context.Owners.Any(e => e.Id == id);
         }
     }
 }

@@ -1,14 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using HelpMoto.Web.Data;
+using HelpMoto.Web.Data.Entities;
+using HelpMoto.Web.Herlpers;
+using HelpMoto.Web.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using HelpMoto.Web.Data;
-using HelpMoto.Web.Data.Entities;
-using HelpMoto.Web.Models;
-using HelpMoto.Web.Herlpers;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace HelpMoto.Web.Controllers
 {
@@ -17,10 +17,15 @@ namespace HelpMoto.Web.Controllers
     {
         private readonly DataContext _context;
         private readonly IUserHelper _userHelper;
-        public OwnersController(DataContext context, IUserHelper userHelper)
+        private readonly ICombosHelper _combosHelper;
+       
+        public OwnersController(DataContext context, 
+            IUserHelper userHelper,
+            ICombosHelper combosHelper)
         {
             _context = context;
             _userHelper = userHelper;
+            _combosHelper = combosHelper;
         }
 
         public IActionResult Index()
@@ -186,5 +191,28 @@ namespace HelpMoto.Web.Controllers
         {
             return _context.Owners.Any(e => e.Id == id);
         }
+        public async Task<IActionResult> AddMotorcycle(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var owner = await _context.Owners.FindAsync(id.Value);
+            if (owner == null)
+            {
+                return NotFound();
+            }
+
+            var model = new MotorcycleViewModel
+            {
+                Shop = DateTime.Today,
+                OwnerId = owner.Id,
+                MotorcycleTypes = _combosHelper.GetComboMotorcycleTypes()
+            };
+
+            return View(model);
+        }
+
     }
 }

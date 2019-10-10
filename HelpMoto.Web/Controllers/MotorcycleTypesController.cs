@@ -53,7 +53,6 @@ namespace HelpMoto.Web.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Name")] MotorcycleType motorcycleType)
         {
             if (ModelState.IsValid)
@@ -85,7 +84,6 @@ namespace HelpMoto.Web.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Name")] MotorcycleType motorcycleType)
         {
             if (id != motorcycleType.Id)
@@ -116,7 +114,6 @@ namespace HelpMoto.Web.Controllers
             return View(motorcycleType);
         }
 
-        // GET: MotorcycleTypes/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -125,21 +122,18 @@ namespace HelpMoto.Web.Controllers
             }
 
             var motorcycleType = await _context.MotorcycleTypes
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .Include(mt => mt.Motorcycles)
+                .FirstOrDefaultAsync(mt => mt.Id == id);
             if (motorcycleType == null)
             {
                 return NotFound();
             }
+            if (motorcycleType.Motorcycles.Count > 0)
+            {
+                ModelState.AddModelError(string.Empty, "the motorcycle type can not be removed");
+                return RedirectToAction(nameof(Index));
+            }
 
-            return View(motorcycleType);
-        }
-
-        // POST: MotorcycleTypes/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var motorcycleType = await _context.MotorcycleTypes.FindAsync(id);
             _context.MotorcycleTypes.Remove(motorcycleType);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));

@@ -57,7 +57,7 @@
 </div>
 <div>
     <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">Edit</a> |
-    <a asp-action="AddMotorcycle" asp-route-id="@Model.Id" class="btn btn-primary">Add Motorcycle</a>
+    <a asp-action="AddMotorcycle" asp-route-id="@Model.Id" class="btn btn-primary">AddMotorcycle</a>
     <a asp-action="Index" class="btn btn-success"> Back to List</a>
 </div>
 @if (Model.Motorcycles.Count == 0)
@@ -71,6 +71,9 @@ else
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.Motorcycles.FirstOrDefault().Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Motorcycles.FirstOrDefault().ImageUrl)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Motorcycles.FirstOrDefault().Brand)
@@ -93,6 +96,12 @@ else
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @if (!string.IsNullOrEmpty(item.ImageUrl))
+                {
+                    <img src="@Url.Content(item.ImageUrl)" alt="Image" style="width:200px;height:200px;max-width: 100%; height: auto;" />
+                }
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Brand)

@@ -79,8 +79,8 @@ namespace HelpMoto.Web.Data
             { 
             var owner = _dataContext.Owners.FirstOrDefault();
             var motorcycleType = _dataContext.MotorcycleTypes.FirstOrDefault();
-                AddMotorcycle("CB1", owner, motorcycleType, "Honda");
-                AddMotorcycle("BWIS", owner, motorcycleType, "Yamaha");
+                AddMotorcycle("Pirula", owner, motorcycleType, "SUZUKI");
+                AddMotorcycle("Pirula", owner, motorcycleType, "SUZUKI");
                 await _dataContext.SaveChangesAsync();
             }
         }

@@ -15,7 +15,7 @@ namespace HelpMoto.Web.Models
 
         [Required(ErrorMessage = "The field {0} is mandatory.")]
         [Display(Name = "Motorcycle Type")]
-        [Range(1, int.MaxValue, ErrorMessage = "You must select a pet type.")]
+        [Range(1, int.MaxValue, ErrorMessage = "You must select a motorcycle type.")]
         public int MotorcycleTypeId { get; set; }
 
         [Display(Name = "Image")]

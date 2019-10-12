@@ -37,8 +37,5 @@ namespace HelpMoto.Web.Data.Entities
 
         public MotorcycleType MotorcycleType { get; set; }
         public Owner Owner { get; set; }
-        public ICollection<PlaceSelling> PlaceSellings { get; set; }
-        public ICollection<CraneService> CraneServices { get; set; }
-        public ICollection<WorkshopService> WorkshopServices { get; set; }
     }
 }

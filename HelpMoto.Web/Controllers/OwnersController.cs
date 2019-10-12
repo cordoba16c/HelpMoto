@@ -193,10 +193,6 @@ namespace HelpMoto.Web.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool OwnerExists(int id)
-        {
-            return _dataContext.Owners.Any(e => e.Id == id);
-        }
         public async Task<IActionResult> AddMotorcycle(int? id)
         {
             if (id == null)

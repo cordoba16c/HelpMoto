@@ -14,4 +14,8 @@
     <Folder Include="wwwroot\images\Motorcycles\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\HelpMoto.Common\HelpMoto.Common.csproj" />
+  </ItemGroup>
+
 </Project>

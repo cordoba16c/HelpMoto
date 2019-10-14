@@ -34,7 +34,7 @@ namespace HelpMoto.Web.Data.Entities
         [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode = true)]
         public DateTime FinalDateLocal => FinalDate.ToLocalTime();
 
-        public WorkshopType WorkshopType { get; set; }
+        public WorkshopType ServiceType { get; set; }
 
         public Motorcycle motorcycle { get; set; }
     }

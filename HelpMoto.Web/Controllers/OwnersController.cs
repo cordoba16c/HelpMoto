@@ -276,7 +276,7 @@ namespace HelpMoto.Web.Controllers
             model.MotorcycleTypes = _combosHelper.GetComboMotorcycleTypes();
             return View(model);
         }
-        public async Task<IActionResult> DeleteMotorcycle(int? id)
+        public async Task<IActionResult> DetailsMotorcycle(int? id)
         {
             if (id == null)
             {
@@ -284,16 +284,18 @@ namespace HelpMoto.Web.Controllers
             }
 
             var motorcycle = await _dataContext.Motorcycles
-                .Include(m => m.Owner)
-                .FirstOrDefaultAsync(m => m.Id == id.Value);
+                .Include(p => p.Owner)
+                .ThenInclude(o => o.User)
+                .Include(p => p.Histories)
+                .ThenInclude(h => h.ServiceType)
+                .FirstOrDefaultAsync(o => o.Id == id.Value);
             if (motorcycle == null)
             {
                 return NotFound();
             }
 
-            _dataContext.Motorcycles.Remove(motorcycle);
-            await _dataContext.SaveChangesAsync();
-            return RedirectToAction($"{nameof(Details)}/{motorcycle.Owner.Id}");
+            return View(motorcycle);
         }
+          
     }
 }

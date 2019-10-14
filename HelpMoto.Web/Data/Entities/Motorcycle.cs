@@ -20,8 +20,8 @@ namespace HelpMoto.Web.Data.Entities
         public string Brand { get; set; }
 
         [Display(Name = "Shop")]
-        /*[Required(ErrorMessage = "The field {0} is mandatory.")]
-        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode = true)]*/
+        [Required(ErrorMessage = "The field {0} is mandatory.")]
+        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode = true)]
         public DateTime Shop { get; set; }
 
         public string Remarks { get; set; }
@@ -32,7 +32,7 @@ namespace HelpMoto.Web.Data.Entities
             : $"https://TDB.azurewebsites.net{ImageUrl.Substring(1)}";
 
         [Display(Name = "Shop")]
-        /*[DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}")]*/
+        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}")]
         public DateTime ShopLocal => Shop.ToLocalTime();
 
         public MotorcycleType MotorcycleType { get; set; }

@@ -17,7 +17,7 @@ namespace HelpMoto.Web.Data.Entities
         public string ImageUrl { get; set; }
 
         [MaxLength(50, ErrorMessage = "The {0} field can not have more than {1} characters.")]
-        public string Brand { get; set; }
+        public string Brand { get; set; }   
 
         [Display(Name = "Shop")]
         [Required(ErrorMessage = "The field {0} is mandatory.")]
@@ -37,5 +37,7 @@ namespace HelpMoto.Web.Data.Entities
 
         public MotorcycleType MotorcycleType { get; set; }
         public Owner Owner { get; set; }
+        public ICollection<History> Histories { get; set; }
+
     }
 }

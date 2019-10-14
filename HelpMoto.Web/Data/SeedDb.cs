@@ -23,16 +23,11 @@ namespace HelpMoto.Web.Data
             await _dataContext.Database.EnsureCreatedAsync();
             await CheckRoles();
             var manager = await CheckUserAsync("1010", "Hernan", "Cordoba", "cordoba16c@gmail.com", "350 634 2747", "Calle Luna Calle Sol", "Admin");
-            var customer = await CheckUserAsync("2020", "Johana", "Gonzalez", "johanacardonag@hotmail.com", "350 634 2747", "Calle Luna Calle Sol", "Customer");
+            var customer = await CheckUserAsync("2020", "Johana", "Gonzalez", "johanacardonag@gmail.com", "350 634 2747", "Calle Luna Calle Sol", "Customer");
             await CheckMotorcycleTypesAsync();
-            await CheckPlaceSellingTypesAsync();
             await CheckMotorcyclesAsync();
-            await CheckWorkshopServicesAsync();
-            await CheckConcessionairesAsync();
-            await CheckCraneServicesAsync();
             await CheckOwnerAsync(customer);
             await CheckManagerAsync(manager);
-            await CheckPlaceSellingsAsync();
             await CheckWorkshopTypesAsync();
             
         }
@@ -79,33 +74,11 @@ namespace HelpMoto.Web.Data
             { 
             var owner = _dataContext.Owners.FirstOrDefault();
             var motorcycleType = _dataContext.MotorcycleTypes.FirstOrDefault();
-                AddMotorcycle("CB1", owner, motorcycleType, "Honda");
-                AddMotorcycle("BWIS", owner, motorcycleType, "Yamaha");
+                AddMotorcycle("Pirula", owner, motorcycleType, "SUZUKI");
                 await _dataContext.SaveChangesAsync();
             }
         }
 
-        private async Task CheckPlaceSellingTypesAsync()
-        {
-            if (!_dataContext.PlaceSellingTypes.Any())
-            {
-                _dataContext.PlaceSellingTypes.Add(new PlaceSellingType { Name = "Cascos" });
-                _dataContext.PlaceSellingTypes.Add(new PlaceSellingType { Name = "Repuestos" });
-                _dataContext.PlaceSellingTypes.Add(new PlaceSellingType { Name = "Llantas" });
-                await _dataContext.SaveChangesAsync();
-            }
-        }
-
-        private async Task CheckWorkshopServicesAsync()
-        {
-            if (!_dataContext.WorkshopServices.Any())
-            {
-                _dataContext.WorkshopServices.Add(new WorkshopService { Name = "Taller Pepe" });
-                _dataContext.WorkshopServices.Add(new WorkshopService { Name = "Moto Reparo" });
-                _dataContext.WorkshopServices.Add(new WorkshopService { Name = "Aceites Moto" });
-                await _dataContext.SaveChangesAsync();
-            }
-        }
 
         private async Task CheckWorkshopTypesAsync()
         {
@@ -118,46 +91,12 @@ namespace HelpMoto.Web.Data
             }
         }
 
-
-        private async Task CheckConcessionairesAsync()
-        {
-            if (!_dataContext.Concessionaires.Any())
-            {
-                _dataContext.Concessionaires.Add(new Concessionaire { Name = "Honda" });
-                _dataContext.Concessionaires.Add(new Concessionaire { Name = "Auteco" });
-                _dataContext.Concessionaires.Add(new Concessionaire { Name = "AKT" });
-                await _dataContext.SaveChangesAsync();
-            }
-        }
-
-        private async Task CheckCraneServicesAsync()
-        {
-            if (!_dataContext.CraneServices.Any())
-            {
-                _dataContext.CraneServices.Add(new CraneService { Name = "Grua" });
-                _dataContext.CraneServices.Add(new CraneService { Name = "Moto Grua" });
-                _dataContext.CraneServices.Add(new CraneService { Name = "Grua Taller" });
-                await _dataContext.SaveChangesAsync();
-            }
-        }
-
-        private async Task CheckPlaceSellingsAsync()
-        {
-            if (!_dataContext.PlaceSellings.Any())
-            {
-                _dataContext.PlaceSellings.Add(new PlaceSelling { Name = "Cascos Lucho" });
-                _dataContext.PlaceSellings.Add(new PlaceSelling { Name = "Bayadera Shop" });
-                _dataContext.PlaceSellings.Add(new PlaceSelling { Name = "Moto Llantas" });
-                await _dataContext.SaveChangesAsync();
-            }
-        }
-
         private async Task CheckMotorcycleTypesAsync()
         {
             if (!_dataContext.MotorcycleTypes.Any())
             {
-                _dataContext.MotorcycleTypes.Add(new MotorcycleType { Name = "Sport" });
-                _dataContext.MotorcycleTypes.Add(new MotorcycleType { Name = "Scooter" });
+                _dataContext.MotorcycleTypes.Add(new MotorcycleType { Name = "SPORT" });
+                _dataContext.MotorcycleTypes.Add(new MotorcycleType { Name = "SCOOTER" });
                 await _dataContext.SaveChangesAsync();
             }
         }

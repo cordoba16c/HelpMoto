@@ -1,10 +1,11 @@
-﻿using Microsoft.AspNetCore.Identity;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace HelpMoto.Web.Data.Entities
+namespace HelpMoto.Web.Models
 {
-    public class User : IdentityUser
+    public class EditUserViewModel
     {
+        public int Id { get; set; }
+
         [Display(Name = "Document")]
         [MaxLength(20, ErrorMessage = "The {0} field can not have more than {1} characters.")]
         [Required(ErrorMessage = "The field {0} is mandatory.")]
@@ -25,13 +26,7 @@ namespace HelpMoto.Web.Data.Entities
 
         [Display(Name = "Phone Number")]
         [MaxLength(50, ErrorMessage = "The {0} field can not have more than {1} characters.")]
-        [Required(ErrorMessage = "The field {0} is mandatory.")]
         public string PhoneNumber { get; set; }
 
-        [Display(Name = "Full Name")]
-        public string FullName => $"{FirstName} {LastName}";
-
-        [Display(Name = "Full Name")]
-        public string FullNameWithDocument => $"{FirstName} {LastName} - {Document}";
     }
 }

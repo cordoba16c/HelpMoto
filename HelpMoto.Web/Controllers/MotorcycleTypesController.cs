@@ -7,27 +7,25 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using HelpMoto.Web.Data;
 using HelpMoto.Web.Data.Entities;
-using Microsoft.AspNetCore.Authorization;
 
 namespace HelpMoto.Web.Controllers
 {
-    [Authorize(Roles = "Admin")]
-    public class ManagersController : Controller
+    public class MotorcycleTypesController : Controller
     {
         private readonly DataContext _context;
 
-        public ManagersController(DataContext context)
+        public MotorcycleTypesController(DataContext context)
         {
             _context = context;
         }
 
-        // GET: Managers
+        // GET: MotorcycleTypes
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Managers.ToListAsync());
+            return View(await _context.MotorcycleTypes.ToListAsync());
         }
 
-        // GET: Managers/Details/5
+        // GET: MotorcycleTypes/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -35,39 +33,38 @@ namespace HelpMoto.Web.Controllers
                 return NotFound();
             }
 
-            var manager = await _context.Managers
+            var motorcycleType = await _context.MotorcycleTypes
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (manager == null)
+            if (motorcycleType == null)
             {
                 return NotFound();
             }
 
-            return View(manager);
+            return View(motorcycleType);
         }
 
-        // GET: Managers/Create
+        // GET: MotorcycleTypes/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Managers/Create
+        // POST: MotorcycleTypes/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id")] Manager manager)
+        public async Task<IActionResult> Create([Bind("Id,Name")] MotorcycleType motorcycleType)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(manager);
+                _context.Add(motorcycleType);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(manager);
+            return View(motorcycleType);
         }
 
-        // GET: Managers/Edit/5
+        // GET: MotorcycleTypes/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -75,22 +72,21 @@ namespace HelpMoto.Web.Controllers
                 return NotFound();
             }
 
-            var manager = await _context.Managers.FindAsync(id);
-            if (manager == null)
+            var motorcycleType = await _context.MotorcycleTypes.FindAsync(id);
+            if (motorcycleType == null)
             {
                 return NotFound();
             }
-            return View(manager);
+            return View(motorcycleType);
         }
 
-        // POST: Managers/Edit/5
+        // POST: MotorcycleTypes/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id")] Manager manager)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name")] MotorcycleType motorcycleType)
         {
-            if (id != manager.Id)
+            if (id != motorcycleType.Id)
             {
                 return NotFound();
             }
@@ -99,12 +95,12 @@ namespace HelpMoto.Web.Controllers
             {
                 try
                 {
-                    _context.Update(manager);
+                    _context.Update(motorcycleType);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ManagerExists(manager.Id))
+                    if (!MotorcycleTypeExists(motorcycleType.Id))
                     {
                         return NotFound();
                     }
@@ -115,10 +111,9 @@ namespace HelpMoto.Web.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(manager);
+            return View(motorcycleType);
         }
 
-        // GET: Managers/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -126,30 +121,27 @@ namespace HelpMoto.Web.Controllers
                 return NotFound();
             }
 
-            var manager = await _context.Managers
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (manager == null)
+            var motorcycleType = await _context.MotorcycleTypes
+                .Include(mt => mt.Motorcycles)
+                .FirstOrDefaultAsync(mt => mt.Id == id);
+            if (motorcycleType == null)
             {
                 return NotFound();
             }
+            if (motorcycleType.Motorcycles.Count > 0)
+            {
+                ModelState.AddModelError(string.Empty, "the motorcycle type can not be removed");
+                return RedirectToAction(nameof(Index));
+            }
 
-            return View(manager);
-        }
-
-        // POST: Managers/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var manager = await _context.Managers.FindAsync(id);
-            _context.Managers.Remove(manager);
+            _context.MotorcycleTypes.Remove(motorcycleType);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool ManagerExists(int id)
+        private bool MotorcycleTypeExists(int id)
         {
-            return _context.Managers.Any(e => e.Id == id);
+            return _context.MotorcycleTypes.Any(e => e.Id == id);
         }
     }
 }

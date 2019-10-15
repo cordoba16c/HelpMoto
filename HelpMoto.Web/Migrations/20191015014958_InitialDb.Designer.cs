@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HelpMoto.Web.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20190928055419_Users")]
-    partial class Users
+    [Migration("20191015014958_InitialDb")]
+    partial class InitialDb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,65 +21,33 @@ namespace HelpMoto.Web.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("HelpMoto.Web.Data.Entities.Concessionaire", b =>
+            modelBuilder.Entity("HelpMoto.Web.Data.Entities.History", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(50);
-
-                    b.Property<int?>("Ownerid");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("Ownerid");
-
-                    b.ToTable("Concessionaires");
-                });
-
-            modelBuilder.Entity("HelpMoto.Web.Data.Entities.CraneService", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int?>("MotorcycleId");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(50);
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("MotorcycleId");
-
-                    b.ToTable("CraneServices");
-                });
-
-            modelBuilder.Entity("HelpMoto.Web.Data.Entities.ExtraService", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("Date");
 
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasMaxLength(100);
 
-                    b.Property<int?>("Ownerid");
+                    b.Property<DateTime>("FinalDate");
+
+                    b.Property<DateTime>("InicialDate");
+
+                    b.Property<int?>("MotorcycleId");
 
                     b.Property<string>("Remarks");
 
+                    b.Property<int?>("WorkshopTypeId");
+
                     b.HasKey("Id");
 
-                    b.HasIndex("Ownerid");
+                    b.HasIndex("MotorcycleId");
 
-                    b.ToTable("ExtraServices");
+                    b.HasIndex("WorkshopTypeId");
+
+                    b.ToTable("Histories");
                 });
 
             modelBuilder.Entity("HelpMoto.Web.Data.Entities.Manager", b =>
@@ -114,7 +82,7 @@ namespace HelpMoto.Web.Migrations
                         .IsRequired()
                         .HasMaxLength(50);
 
-                    b.Property<int?>("Ownerid");
+                    b.Property<int?>("OwnerId");
 
                     b.Property<string>("Remarks");
 
@@ -124,7 +92,7 @@ namespace HelpMoto.Web.Migrations
 
                     b.HasIndex("MotorcycleTypeId");
 
-                    b.HasIndex("Ownerid");
+                    b.HasIndex("OwnerId");
 
                     b.ToTable("Motorcycles");
                 });
@@ -146,59 +114,17 @@ namespace HelpMoto.Web.Migrations
 
             modelBuilder.Entity("HelpMoto.Web.Data.Entities.Owner", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("UserId");
 
-                    b.HasKey("id");
+                    b.HasKey("Id");
 
                     b.HasIndex("UserId");
 
                     b.ToTable("Owners");
-                });
-
-            modelBuilder.Entity("HelpMoto.Web.Data.Entities.PlaceSelling", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int?>("MotorcycleId");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(50);
-
-                    b.Property<int?>("Ownerid");
-
-                    b.Property<int?>("PlaceSellingTypeId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("MotorcycleId");
-
-                    b.HasIndex("Ownerid");
-
-                    b.HasIndex("PlaceSellingTypeId");
-
-                    b.ToTable("PlaceSellings");
-                });
-
-            modelBuilder.Entity("HelpMoto.Web.Data.Entities.PlaceSellingType", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(50);
-
-                    b.HasKey("Id");
-
-                    b.ToTable("PlaceSellingTypes");
                 });
 
             modelBuilder.Entity("HelpMoto.Web.Data.Entities.User", b =>
@@ -243,7 +169,9 @@ namespace HelpMoto.Web.Migrations
 
                     b.Property<string>("PasswordHash");
 
-                    b.Property<string>("PhoneNumber");
+                    b.Property<string>("PhoneNumber")
+                        .IsRequired()
+                        .HasMaxLength(50);
 
                     b.Property<bool>("PhoneNumberConfirmed");
 
@@ -265,29 +193,6 @@ namespace HelpMoto.Web.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers");
-                });
-
-            modelBuilder.Entity("HelpMoto.Web.Data.Entities.WorkshopService", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int?>("MotorcycleId");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(50);
-
-                    b.Property<int?>("WorkshopTypeId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("MotorcycleId");
-
-                    b.HasIndex("WorkshopTypeId");
-
-                    b.ToTable("WorkshopServices");
                 });
 
             modelBuilder.Entity("HelpMoto.Web.Data.Entities.WorkshopType", b =>
@@ -415,25 +320,15 @@ namespace HelpMoto.Web.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("HelpMoto.Web.Data.Entities.Concessionaire", b =>
-                {
-                    b.HasOne("HelpMoto.Web.Data.Entities.Owner", "Owner")
-                        .WithMany("Concessionaires")
-                        .HasForeignKey("Ownerid");
-                });
-
-            modelBuilder.Entity("HelpMoto.Web.Data.Entities.CraneService", b =>
+            modelBuilder.Entity("HelpMoto.Web.Data.Entities.History", b =>
                 {
                     b.HasOne("HelpMoto.Web.Data.Entities.Motorcycle", "Motorcycle")
-                        .WithMany("CraneServices")
+                        .WithMany("Histories")
                         .HasForeignKey("MotorcycleId");
-                });
 
-            modelBuilder.Entity("HelpMoto.Web.Data.Entities.ExtraService", b =>
-                {
-                    b.HasOne("HelpMoto.Web.Data.Entities.Owner", "Owner")
-                        .WithMany("ExtraServices")
-                        .HasForeignKey("Ownerid");
+                    b.HasOne("HelpMoto.Web.Data.Entities.WorkshopType", "WorkshopType")
+                        .WithMany("Histories")
+                        .HasForeignKey("WorkshopTypeId");
                 });
 
             modelBuilder.Entity("HelpMoto.Web.Data.Entities.Manager", b =>
@@ -451,7 +346,7 @@ namespace HelpMoto.Web.Migrations
 
                     b.HasOne("HelpMoto.Web.Data.Entities.Owner", "Owner")
                         .WithMany("Motorcycles")
-                        .HasForeignKey("Ownerid");
+                        .HasForeignKey("OwnerId");
                 });
 
             modelBuilder.Entity("HelpMoto.Web.Data.Entities.Owner", b =>
@@ -459,32 +354,6 @@ namespace HelpMoto.Web.Migrations
                     b.HasOne("HelpMoto.Web.Data.Entities.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId");
-                });
-
-            modelBuilder.Entity("HelpMoto.Web.Data.Entities.PlaceSelling", b =>
-                {
-                    b.HasOne("HelpMoto.Web.Data.Entities.Motorcycle", "Motorcycle")
-                        .WithMany("PlaceSellings")
-                        .HasForeignKey("MotorcycleId");
-
-                    b.HasOne("HelpMoto.Web.Data.Entities.Owner", "Owner")
-                        .WithMany("PlaceSellings")
-                        .HasForeignKey("Ownerid");
-
-                    b.HasOne("HelpMoto.Web.Data.Entities.PlaceSellingType", "PlaceSellingType")
-                        .WithMany("PlaceSellings")
-                        .HasForeignKey("PlaceSellingTypeId");
-                });
-
-            modelBuilder.Entity("HelpMoto.Web.Data.Entities.WorkshopService", b =>
-                {
-                    b.HasOne("HelpMoto.Web.Data.Entities.Motorcycle")
-                        .WithMany("WorkshopServices")
-                        .HasForeignKey("MotorcycleId");
-
-                    b.HasOne("HelpMoto.Web.Data.Entities.WorkshopType", "WorkshopType")
-                        .WithMany("WorkshopServices")
-                        .HasForeignKey("WorkshopTypeId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

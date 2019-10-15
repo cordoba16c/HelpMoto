@@ -4,45 +4,10 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace HelpMoto.Web.Migrations
 {
-    public partial class Users : Migration
+    public partial class InitialDb : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropColumn(
-                name: "Address",
-                table: "Owners");
-
-            migrationBuilder.DropColumn(
-                name: "CellPhone",
-                table: "Owners");
-
-            migrationBuilder.DropColumn(
-                name: "Document",
-                table: "Owners");
-
-            migrationBuilder.DropColumn(
-                name: "FirstName",
-                table: "Owners");
-
-            migrationBuilder.DropColumn(
-                name: "FixedPhone",
-                table: "Owners");
-
-            migrationBuilder.DropColumn(
-                name: "LastName",
-                table: "Owners");
-
-            migrationBuilder.AddColumn<string>(
-                name: "UserId",
-                table: "Owners",
-                nullable: true);
-
-            migrationBuilder.AddColumn<string>(
-                name: "Brand",
-                table: "Motorcycles",
-                maxLength: 50,
-                nullable: true);
-
             migrationBuilder.CreateTable(
                 name: "AspNetRoles",
                 columns: table => new
@@ -70,7 +35,6 @@ namespace HelpMoto.Web.Migrations
                     PasswordHash = table.Column<string>(nullable: true),
                     SecurityStamp = table.Column<string>(nullable: true),
                     ConcurrencyStamp = table.Column<string>(nullable: true),
-                    PhoneNumber = table.Column<string>(nullable: true),
                     PhoneNumberConfirmed = table.Column<bool>(nullable: false),
                     TwoFactorEnabled = table.Column<bool>(nullable: false),
                     LockoutEnd = table.Column<DateTimeOffset>(nullable: true),
@@ -79,11 +43,38 @@ namespace HelpMoto.Web.Migrations
                     Document = table.Column<string>(maxLength: 20, nullable: false),
                     FirstName = table.Column<string>(maxLength: 50, nullable: false),
                     LastName = table.Column<string>(maxLength: 50, nullable: false),
-                    Address = table.Column<string>(maxLength: 100, nullable: true)
+                    Address = table.Column<string>(maxLength: 100, nullable: true),
+                    PhoneNumber = table.Column<string>(maxLength: 50, nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "MotorcycleTypes",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Name = table.Column<string>(maxLength: 50, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_MotorcycleTypes", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "WorkshopTypes",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Name = table.Column<string>(maxLength: 50, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_WorkshopTypes", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -211,10 +202,85 @@ namespace HelpMoto.Web.Migrations
                         onDelete: ReferentialAction.Restrict);
                 });
 
-            migrationBuilder.CreateIndex(
-                name: "IX_Owners_UserId",
-                table: "Owners",
-                column: "UserId");
+            migrationBuilder.CreateTable(
+                name: "Owners",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    UserId = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Owners", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Owners_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Motorcycles",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Name = table.Column<string>(maxLength: 50, nullable: false),
+                    ImageUrl = table.Column<string>(nullable: true),
+                    Brand = table.Column<string>(maxLength: 50, nullable: true),
+                    Shop = table.Column<DateTime>(nullable: false),
+                    Remarks = table.Column<string>(nullable: true),
+                    MotorcycleTypeId = table.Column<int>(nullable: true),
+                    OwnerId = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Motorcycles", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Motorcycles_MotorcycleTypes_MotorcycleTypeId",
+                        column: x => x.MotorcycleTypeId,
+                        principalTable: "MotorcycleTypes",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Motorcycles_Owners_OwnerId",
+                        column: x => x.OwnerId,
+                        principalTable: "Owners",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Histories",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Description = table.Column<string>(maxLength: 100, nullable: false),
+                    InicialDate = table.Column<DateTime>(nullable: false),
+                    FinalDate = table.Column<DateTime>(nullable: false),
+                    Remarks = table.Column<string>(nullable: true),
+                    WorkshopTypeId = table.Column<int>(nullable: true),
+                    MotorcycleId = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Histories", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Histories_Motorcycles_MotorcycleId",
+                        column: x => x.MotorcycleId,
+                        principalTable: "Motorcycles",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Histories_WorkshopTypes_WorkshopTypeId",
+                        column: x => x.WorkshopTypeId,
+                        principalTable: "WorkshopTypes",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
@@ -256,25 +322,38 @@ namespace HelpMoto.Web.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Histories_MotorcycleId",
+                table: "Histories",
+                column: "MotorcycleId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Histories_WorkshopTypeId",
+                table: "Histories",
+                column: "WorkshopTypeId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Managers_UserId",
                 table: "Managers",
                 column: "UserId");
 
-            migrationBuilder.AddForeignKey(
-                name: "FK_Owners_AspNetUsers_UserId",
+            migrationBuilder.CreateIndex(
+                name: "IX_Motorcycles_MotorcycleTypeId",
+                table: "Motorcycles",
+                column: "MotorcycleTypeId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Motorcycles_OwnerId",
+                table: "Motorcycles",
+                column: "OwnerId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Owners_UserId",
                 table: "Owners",
-                column: "UserId",
-                principalTable: "AspNetUsers",
-                principalColumn: "Id",
-                onDelete: ReferentialAction.Restrict);
+                column: "UserId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropForeignKey(
-                name: "FK_Owners_AspNetUsers_UserId",
-                table: "Owners");
-
             migrationBuilder.DropTable(
                 name: "AspNetRoleClaims");
 
@@ -291,64 +370,28 @@ namespace HelpMoto.Web.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "Histories");
+
+            migrationBuilder.DropTable(
                 name: "Managers");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
+                name: "Motorcycles");
+
+            migrationBuilder.DropTable(
+                name: "WorkshopTypes");
+
+            migrationBuilder.DropTable(
+                name: "MotorcycleTypes");
+
+            migrationBuilder.DropTable(
+                name: "Owners");
+
+            migrationBuilder.DropTable(
                 name: "AspNetUsers");
-
-            migrationBuilder.DropIndex(
-                name: "IX_Owners_UserId",
-                table: "Owners");
-
-            migrationBuilder.DropColumn(
-                name: "UserId",
-                table: "Owners");
-
-            migrationBuilder.DropColumn(
-                name: "Brand",
-                table: "Motorcycles");
-
-            migrationBuilder.AddColumn<string>(
-                name: "Address",
-                table: "Owners",
-                maxLength: 100,
-                nullable: true);
-
-            migrationBuilder.AddColumn<string>(
-                name: "CellPhone",
-                table: "Owners",
-                maxLength: 20,
-                nullable: true);
-
-            migrationBuilder.AddColumn<string>(
-                name: "Document",
-                table: "Owners",
-                maxLength: 20,
-                nullable: false,
-                defaultValue: "");
-
-            migrationBuilder.AddColumn<string>(
-                name: "FirstName",
-                table: "Owners",
-                maxLength: 50,
-                nullable: false,
-                defaultValue: "");
-
-            migrationBuilder.AddColumn<string>(
-                name: "FixedPhone",
-                table: "Owners",
-                maxLength: 20,
-                nullable: true);
-
-            migrationBuilder.AddColumn<string>(
-                name: "LastName",
-                table: "Owners",
-                maxLength: 50,
-                nullable: false,
-                defaultValue: "");
         }
     }
 }

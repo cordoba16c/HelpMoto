@@ -10,7 +10,7 @@
     <h4>Details</h4>
     <hr />
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-4">
             <dl class="dl-horizontal">
                 <dt>
                     Owner
@@ -69,13 +69,16 @@ else
         <thead>
             <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.Histories.FirstOrDefault().DateLocal)
+                    @Html.DisplayNameFor(model => model.Histories.FirstOrDefault().InicialDateLocal)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Histories.FirstOrDefault().ServiceType.Name)
+                    @Html.DisplayNameFor(model => model.Histories.FirstOrDefault().WorkshopType.Name)
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.Histories.FirstOrDefault().Description)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Histories.FirstOrDefault().FinalDateLocal)
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.Histories.FirstOrDefault().Remarks)
@@ -86,24 +89,27 @@ else
         <tbody>
             @foreach (var item in Model.Histories)
             {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.DateLocal)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.ServiceType.Name)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Description)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Remarks)
-                    </td>
-                    <td>
-                        <a asp-action="EditHistory" asp-route-id="@item.Id" class="btn btn-warning">Edit</a>
-                        <a asp-action="DeleteHistory" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
-                    </td>
-                </tr>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.InicialDateLocal)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.WorkshopType.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FinalDateLocal)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Remarks)
+                </td>
+                <td>
+                    <a asp-action="EditHistory" asp-route-id="@item.Id" class="btn btn-warning">Edit</a>
+                    <a asp-action="DeleteHistory" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
             }
         </tbody>
     </table>

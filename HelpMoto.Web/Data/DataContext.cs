@@ -12,6 +12,7 @@ namespace HelpMoto.Web.Data
 
         public DbSet<Motorcycle> Motorcycles { get; set; }
         public DbSet<MotorcycleType> MotorcycleTypes { get; set; }
+        public DbSet<History> Histories { get; set; }
 
         public DbSet<Owner> Owners { get; set; }
         public DbSet<Manager> Managers { get; set; }

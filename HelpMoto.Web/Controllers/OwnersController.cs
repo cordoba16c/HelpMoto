@@ -287,7 +287,7 @@ namespace HelpMoto.Web.Controllers
                 .Include(p => p.Owner)
                 .ThenInclude(o => o.User)
                 .Include(p => p.Histories)
-                .ThenInclude(h => h.ServiceType)
+                .ThenInclude(h => h.WorkshopType)
                 .FirstOrDefaultAsync(o => o.Id == id.Value);
             if (motorcycle == null)
             {

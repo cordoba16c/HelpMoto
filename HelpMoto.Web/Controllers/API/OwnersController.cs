@@ -32,9 +32,9 @@ namespace HelpMoto.Web.Controllers.API
                 .Include(o => o.Motorcycles)
                 .ThenInclude(p => p.MotorcycleType)
                 .Include(o => o.Motorcycles)
-                /*.ThenInclude(p => p.Histories)
-                .ThenInclude(h => h.ServiceType)
-                .FirstOrDefaultAsync(o => o.User.UserName.ToLower() == emailRequest.Email.ToLower());*/
+                .ThenInclude(p => p.Histories)
+                .ThenInclude(h => h.WorkshopType)
+                /*.FirstOrDefaultAsync(o => o.User.UserName.ToLower() == emailRequest.Email.ToLower());*/
                 .FirstOrDefaultAsync(o => o.User.Email == emailRequest.Email);
             if (owner == null)
             {

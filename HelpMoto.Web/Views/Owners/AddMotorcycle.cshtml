@@ -1,0 +1,58 @@
+﻿@model HelpMoto.Web.Models.MotorcycleViewModel
+@{
+    ViewData["Title"] = "AddMotorcycle";
+}
+<h2>AddMotorcycle</h2>
+
+<h4>Motorcycle</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AddMotorcycle" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="OwnerId" />
+
+            <div class="form-group">
+                <label asp-for="MotorcycleType" class="control-label"></label>
+                <select asp-for="MotorcycleType" asp-items="Model.MotorcycleTypes" class="form-control"></select>
+                <span asp-validation-for="MotorcycleType" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+
+
+            <div class="form-group">
+                <label asp-for="Brand" class="control-label"></label>
+                <input asp-for="Brand" class="form-control" />
+                <span asp-validation-for="Brand" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Shop" class="control-label"></label>
+                <input asp-for="Shop" class="form-control" />
+                <span asp-validation-for="Shop" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="ImageFile" class="control-label"></label>
+                <input asp-for="ImageFile" class="form-control" type="file" />
+                <span asp-validation-for="ImageFile" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Remarks" class="control-label"></label>
+                <input asp-for="Remarks" class="form-control" />
+                <span asp-validation-for="Remarks" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+                <a asp-action="Details" asp-route-id="@Model.OwnerId" class="btn btn-success">Back to Owner</a>
+            </div>
+        </form>
+    </div>
+</div>

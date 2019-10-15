@@ -55,5 +55,33 @@ namespace HelpMoto.Web.Herlpers
                 MotorcycleTypes = _combosHelper.GetComboMotorcycleTypes()
             };
         }
+        public async Task<History> ToHistoryAsync(HistoryViewModel model, bool isNew)
+        {
+            return new History
+            {
+                InicialDate = model.InicialDate.ToUniversalTime(),
+                Description = model.Description,
+                FinalDate = model.FinalDate.ToUniversalTime(),
+                Id = isNew ? 0 : model.Id,
+                Motorcycle = await _dataContext.Motorcycles.FindAsync(model.MotorcycleId),
+                Remarks = model.Remarks,
+                WorkshopType = await _dataContext.WorkshopTypes.FindAsync(model.WorkshopTypeId)
+            };
+        }
+
+        public HistoryViewModel ToHistoryViewModel(History history)
+        {
+            return new HistoryViewModel
+            {
+                InicialDate = history.InicialDate,
+                Description = history.Description,
+                FinalDate = history.FinalDate,
+                Id = history.Id,
+                MotorcycleId = history.Motorcycle.Id,
+                Remarks = history.Remarks,
+                WorkshopTypeId = history.WorkshopType.Id,
+                WorkShopTypes = _combosHelper.GetComboWorkshopType()
+            };
+        }
     }
 }

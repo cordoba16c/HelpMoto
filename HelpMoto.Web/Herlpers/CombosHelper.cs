@@ -32,5 +32,23 @@ namespace HelpMoto.Web.Herlpers
             return list;
         }
 
+        public IEnumerable<SelectListItem> GetComboWorkshopType()
+        { 
+        var list = _dataContext.WorkshopTypes.Select(wt => new SelectListItem
+        {
+            Text = wt.Name,
+            Value = $"{wt.Id}"
+        })
+                .OrderBy(wt => wt.Text)
+                .ToList();
+
+        list.Insert(0, new SelectListItem
+            {
+                Text = "[Select a workshop type...]",
+                Value = "0"
+            });
+
+            return list;
+        }
     }
 }

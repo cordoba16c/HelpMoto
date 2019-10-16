@@ -21,7 +21,7 @@ namespace HelpMoto.Web.Data
         public async Task SeedAsync()
         {
             await _dataContext.Database.EnsureCreatedAsync();
-            await CheckRoles();
+            await CheckRoles(); 
             var manager = await CheckUserAsync("1010", "Hernan", "Cordoba", "cordoba16c@gmail.com", "350 634 2747", "Calle Luna Calle Sol", "Admin");
             var customer = await CheckUserAsync("2020", "Johana", "Gonzalez", "johanacardonag@gmail.com", "350 634 2747", "Calle Luna Calle Sol", "Customer");
             await CheckMotorcycleTypesAsync();

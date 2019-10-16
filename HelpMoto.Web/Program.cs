@@ -26,6 +26,7 @@ namespace HelpMoto.Web
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args)
         {
+
             return WebHost.CreateDefaultBuilder(args).UseStartup<Startup>();
         }
     }

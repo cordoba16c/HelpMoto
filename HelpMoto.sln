@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HelpMoto.Common", "HelpMoto
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HelpMoto.Web", "HelpMoto.Web\HelpMoto.Web.csproj", "{C2E33C78-79AE-4C56-BA8B-18DA49069D74}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelpMoto.Prism", "HelpMoto.Prism\HelpMoto.Prism\HelpMoto.Prism.csproj", "{46B74D6B-6A99-46D2-BE9D-194D04A9CC9B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HelpMoto.Prism", "HelpMoto.Prism\HelpMoto.Prism\HelpMoto.Prism.csproj", "{46B74D6B-6A99-46D2-BE9D-194D04A9CC9B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelpMoto.Prism.Android", "HelpMoto.Prism\HelpMoto.Prism.Android\HelpMoto.Prism.Android.csproj", "{9AF36C07-F3E1-430F-8FEA-CEC8C3FAAE36}"
 EndProject

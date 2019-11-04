@@ -28,8 +28,8 @@ namespace HelpMoto.Prism.ViewModels
             {
                 new Menu
                 {
-                    Icon = "ic_pets_menu",
-                    PageName = "PetsPage",
+                    Icon = "ic_motorcycle",
+                    PageName = "MotorCyclesPage",
                     Title = Languages.MyMotorCycles
                 },
 

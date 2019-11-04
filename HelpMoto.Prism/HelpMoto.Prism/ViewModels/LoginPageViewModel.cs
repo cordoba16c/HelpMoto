@@ -91,7 +91,7 @@ namespace HelpMoto.Prism.ViewModels
             IsRunning = false;
             IsEnabled = true;
 
-            await _navigationService.NavigateAsync("MotorCyclesPage");
+            await _navigationService.NavigateAsync("/HelpMotoMasterDetailPage/NavigationPage/MotorCyclesPage");
             Password = string.Empty;
         }
 

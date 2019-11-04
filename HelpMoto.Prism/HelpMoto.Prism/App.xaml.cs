@@ -4,6 +4,7 @@ using HelpMoto.Prism.ViewModels;
 using HelpMoto.Prism.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using HelpMoto.Common.Services;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace HelpMoto.Prism
@@ -23,13 +24,15 @@ namespace HelpMoto.Prism
         {
             InitializeComponent();
 
-            await NavigationService.NavigateAsync("NavigationPage/MainPage");
+            await NavigationService.NavigateAsync("NavigationPage/LoginPage");
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
+            containerRegistry.Register<IApiService, ApiService>();
             containerRegistry.RegisterForNavigation<NavigationPage>();
-            containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
+            containerRegistry.RegisterForNavigation<LoginPage, LoginPageViewModel>();
+            containerRegistry.RegisterForNavigation<MotorCyclesPage, MotorCyclesPageViewModel>();
         }
     }
 }

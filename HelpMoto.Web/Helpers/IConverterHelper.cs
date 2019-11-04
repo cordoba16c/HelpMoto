@@ -2,7 +2,7 @@
 using HelpMoto.Web.Data.Entities;
 using HelpMoto.Web.Models;
 
-namespace HelpMoto.Web.Herlpers
+namespace HelpMoto.Web.Helpers
 {
     public interface IConverterHelper
     {

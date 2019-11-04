@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace HelpMoto.Web.Herlpers
+namespace HelpMoto.Web.Helpers
 {
     public class CombosHelper : ICombosHelper
     {

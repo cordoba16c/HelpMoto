@@ -5,7 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace HelpMoto.Web.Herlpers
+namespace HelpMoto.Web.Helpers
 {
     public class ImageHelper : IImageHelper
     {

@@ -38,5 +38,13 @@ namespace HelpMoto.Prism.Helpers
         public static string Register => Resource.Register;
 
         public static string Rememberme => Resource.Rememberme;
+
+        public static string Loading => Resource.Loading;
+
+        public static string MyMotorCycles => Resource.MyMotorCycles;
+
+        public static string ModifyProfile => Resource.ModifyProfile;
+
+        public static string Logout => Resource.Logout;
     }
 }

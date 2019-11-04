@@ -22,6 +22,7 @@ namespace HelpMoto.Prism
 
         protected override async void OnInitialized()
         {
+            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MTY2MTcxQDMxMzcyZTMzMmUzMGFtVitGKytWYnF6VkcxM1I0ejhEcm43Z2RlY0FDMFZaYjFIUTNabXljRUU9");
             InitializeComponent();
 
             await NavigationService.NavigateAsync("NavigationPage/LoginPage");
@@ -33,6 +34,7 @@ namespace HelpMoto.Prism
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<LoginPage, LoginPageViewModel>();
             containerRegistry.RegisterForNavigation<MotorCyclesPage, MotorCyclesPageViewModel>();
+            containerRegistry.RegisterForNavigation<HelpMotoMasterDetailPage, HelpMotoMasterDetailPageViewModel>();
         }
     }
 }

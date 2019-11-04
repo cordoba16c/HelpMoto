@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
-namespace HelpMoto.Web.Herlpers
+namespace HelpMoto.Web.Helpers
 {
     public interface ICombosHelper
     {

@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using System.Threading.Tasks;
 
-namespace HelpMoto.Web.Herlpers
+namespace HelpMoto.Web.Helpers
 {
     public interface IImageHelper
     {

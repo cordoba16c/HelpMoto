@@ -3,7 +3,7 @@ using HelpMoto.Web.Models;
 using Microsoft.AspNetCore.Identity;
 using System.Threading.Tasks;
 
-namespace HelpMoto.Web.Herlpers
+namespace HelpMoto.Web.Helpers
 {
     public interface IUserHelper
     {

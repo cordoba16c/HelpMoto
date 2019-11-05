@@ -48,5 +48,7 @@ namespace HelpMoto.Prism.Helpers
         public static string Logout => Resource.Logout;
 
         public static string Profile => Resource.Profile;
+
+        public static string CheckConnection => Resource.CheckConnection;
     }
 }

@@ -171,4 +171,46 @@
   <data name="Profile" xml:space="preserve">
     <value>Profil</value>
   </data>
+  <data name="CheckConnection" xml:space="preserve">
+    <value>Vérifiez la connexion Internet</value>
+  </data>
+  <data name="Saving" xml:space="preserve">
+    <value>Enregistrement...</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Enregistrer</value>
+  </data>
+  <data name="ChangePassword" xml:space="preserve">
+    <value>Modifier le mot de passe</value>
+  </data>
+  <data name="Phone" xml:space="preserve">
+    <value>Téléphone</value>
+  </data>
+  <data name="PhonePlaceHolder" xml:space="preserve">
+    <value>Entrez votre numéro de téléphone...</value>
+  </data>
+  <data name="Address" xml:space="preserve">
+    <value>Adresse</value>
+  </data>
+  <data name="AddressPlaceHolder" xml:space="preserve">
+    <value>Entrez votre adresse.</value>
+  </data>
+  <data name="Lastname" xml:space="preserve">
+    <value>Nom</value>
+  </data>
+  <data name="LastnamePlaceHolder" xml:space="preserve">
+    <value>Entrez votre nom</value>
+  </data>
+  <data name="Firstname" xml:space="preserve">
+    <value>Prénom</value>
+  </data>
+  <data name="FirstnamePlaceHolder" xml:space="preserve">
+    <value>Entrez votre prénom</value>
+  </data>
+  <data name="Document" xml:space="preserve">
+    <value>Document</value>
+  </data>
+  <data name="DocumentPlaceHolder" xml:space="preserve">
+    <value>Entrez votre document ...</value>
+  </data>
 </root>

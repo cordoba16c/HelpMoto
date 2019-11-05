@@ -84,7 +84,10 @@ namespace HelpMoto.Prism.ViewModels
             {
                 IsEnabled = true;
                 IsRunning = false;
-                await App.Current.MainPage.DisplayAlert("Error", "Check the internet connection.", "Accept");
+                await App.Current.MainPage.DisplayAlert(
+                    Languages.Error, 
+                    Languages.CheckConnection, 
+                    Languages.Accept);
                 return;
             }
 

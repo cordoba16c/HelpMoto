@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace HelpMoto.Web.Data.Entities
@@ -33,5 +34,7 @@ namespace HelpMoto.Web.Data.Entities
 
         [Display(Name = "Full Name")]
         public string FullNameWithDocument => $"{FirstName} {LastName} - {Document}";
+
+        
     }
 }

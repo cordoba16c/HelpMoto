@@ -1,6 +1,6 @@
 ﻿using HelpMoto.Web.Data;
 using HelpMoto.Web.Data.Entities;
-using HelpMoto.Web.Herlpers;
+using HelpMoto.Web.Helpers;
 using HelpMoto.Web.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;

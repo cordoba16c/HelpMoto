@@ -2,6 +2,7 @@
 using HelpMoto.Web.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,16 +33,47 @@ namespace HelpMoto.Web.Controllers.API
                 .Include(o => o.Motorcycles)
                 .ThenInclude(p => p.MotorcycleType)
                 .Include(o => o.Motorcycles)
-                /*.ThenInclude(p => p.Histories)
-                .ThenInclude(h => h.ServiceType)
-                .FirstOrDefaultAsync(o => o.User.UserName.ToLower() == emailRequest.Email.ToLower());*/
+                .ThenInclude(p => p.Histories)
+                .ThenInclude(h => h.WorkshopType)
+                .FirstOrDefaultAsync(o => o.User.UserName.ToLower() == emailRequest.Email.ToLower())
                 .FirstOrDefaultAsync(o => o.User.Email == emailRequest.Email);
-            if (owner == null)
-            {
-                return NotFound();
-            }
-            return Ok(owner);
 
+            
+            var response = new OwnerResponse
+            {
+                Id = owner.Id,  
+                FirstName = owner.User.FirstName,
+                LastName = owner.User.LastName,
+                Address = owner.User.Address,
+                Document = owner.User.Document,
+                Email = owner.User.Email,
+                PhoneNumber = owner.User.PhoneNumber,
+                Motorcycles = owner.Motorcycles.Select(p => new MotorcycleResponse
+                {
+                    
+                    Id = p.Id,
+                    Name = p.Name,
+                    ImageUrl = p.ImageFullPath,
+                    Brand = p.Brand,
+                    Shop = p.Shop,
+                    Remarks = p.Remarks,
+                    ShopLocal = p.ShopLocal,
+                    MotorcycleType = p.MotorcycleType.Name,
+                    Histories = p.Histories.Select(h => new HistoryResponse
+                    {
+                        InicialDate = h.InicialDate,
+                        FinalDate = h.FinalDate,
+                        Description = h.Description,
+                        Id = h.Id,
+                        Remarks = h.Remarks,
+                        WorkshopType = h.WorkshopType.Name
+                    }).ToList()
+                }).ToList()
+            };
+
+            return Ok(response);
         }
     }
+
 }
+ 

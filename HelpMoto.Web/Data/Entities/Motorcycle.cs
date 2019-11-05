@@ -37,5 +37,6 @@ namespace HelpMoto.Web.Data.Entities
 
         public MotorcycleType MotorcycleType { get; set; }
         public Owner Owner { get; set; }
+        public ICollection<History> Histories { get; set; }
     }
 }

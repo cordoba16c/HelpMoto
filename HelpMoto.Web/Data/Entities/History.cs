@@ -36,6 +36,7 @@ namespace HelpMoto.Web.Data.Entities
 
         public WorkshopType WorkshopType { get; set; }
 
-        public Motorcycle motorcycle { get; set; }
+        public Motorcycle Motorcycle { get; set; }
+
     }
 }

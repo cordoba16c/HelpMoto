@@ -1,25 +1,29 @@
-﻿using HelpMoto.Web.Data;
-using HelpMoto.Web.Data.Entities;
+﻿using System.Collections.Generic;
+using System.Linq;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
+using HelpMoto.Web.Data;
+using HelpMoto.Web.Data.Entities;
 
 namespace HelpMoto.Web.Controllers.API
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class MotorcycleTypesController : ControllerBase
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    public class MotorcycleTypesController : Controller
     {
-        private readonly DataContext _context;
+        private readonly DataContext _dataContext;
 
-        public MotorcycleTypesController(DataContext context)
+        public MotorcycleTypesController(DataContext dataContext)
         {
-            _context = context;
+            _dataContext = dataContext;
         }
 
         [HttpGet]
         public IEnumerable<MotorcycleType> GetMotorcycleTypes()
         {
-            return _context.MotorcycleTypes;
+            return _dataContext.MotorcycleTypes.OrderBy(pt => pt.Name);
         }
     }
 }

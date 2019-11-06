@@ -1,4 +1,5 @@
-﻿using HelpMoto.Common.Services;
+﻿using HelpMoto.Common.Models;
+using HelpMoto.Common.Services;
 using HelpMoto.Prism.Helpers;
 using Prism.Commands;
 using Prism.Mvvm;
@@ -90,6 +91,14 @@ namespace HelpMoto.Prism.ViewModels
                     Languages.Accept);
                 return;
             }
+
+            var request = new TokenRequest
+            {
+                Password = Password,
+                Username = Email
+            };
+
+            var response = await _apiService.GetTokenAsync(url, "Account", "/CreateToken", request);
 
             IsRunning = false;
             IsEnabled = true;

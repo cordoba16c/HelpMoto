@@ -4,6 +4,7 @@ using HelpMoto.Prism.ViewModels;
 using HelpMoto.Prism.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using HelpMoto.Common.Services;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace HelpMoto.Prism
@@ -21,15 +22,20 @@ namespace HelpMoto.Prism
 
         protected override async void OnInitialized()
         {
+            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MTY2MTcxQDMxMzcyZTMzMmUzMGFtVitGKytWYnF6VkcxM1I0ejhEcm43Z2RlY0FDMFZaYjFIUTNabXljRUU9");
             InitializeComponent();
 
-            await NavigationService.NavigateAsync("NavigationPage/MainPage");
+            await NavigationService.NavigateAsync("NavigationPage/LoginPage");
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
+            containerRegistry.Register<IApiService, ApiService>();
             containerRegistry.RegisterForNavigation<NavigationPage>();
-            containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
+            containerRegistry.RegisterForNavigation<LoginPage, LoginPageViewModel>();
+            containerRegistry.RegisterForNavigation<MotorCyclesPage, MotorCyclesPageViewModel>();
+            containerRegistry.RegisterForNavigation<HelpMotoMasterDetailPage, HelpMotoMasterDetailPageViewModel>();
+            containerRegistry.RegisterForNavigation<ProfilePage, ProfilePageViewModel>();
         }
     }
 }

@@ -18,6 +18,9 @@ namespace HelpMoto.Web.Helpers
         Task LogoutAsync();
         Task<bool> DeleteUserAsync(string email);
         Task<IdentityResult> UpdateUserAsync(User user);
+        Task<string> GenerateEmailConfirmationTokenAsync(User user);
+        Task<string> GeneratePasswordResetTokenAsync(User user);
+        Task<IdentityResult> ChangePasswordAsync(User user, string oldPassword, string newPassword);
     }
 
 }

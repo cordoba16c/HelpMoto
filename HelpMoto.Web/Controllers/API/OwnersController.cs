@@ -28,15 +28,15 @@ namespace HelpMoto.Web.Controllers.API
             {
                 return BadRequest();
             }
-            var owner = _context.Owners
+            var owner = await _context.Owners
                 .Include(o => o.User)
                 .Include(o => o.Motorcycles)
                 .ThenInclude(p => p.MotorcycleType)
                 .Include(o => o.Motorcycles)
                 .ThenInclude(p => p.Histories)
                 .ThenInclude(h => h.WorkshopType)
-                .FirstOrDefaultAsync(o => o.User.UserName.ToLower() == emailRequest.Email.ToLower())
-                .FirstOrDefaultAsync(o => o.User.Email == emailRequest.Email);
+                .FirstOrDefaultAsync(o => o.User.UserName.ToLower() == emailRequest.Email.ToLower());
+                
 
             
             var response = new OwnerResponse

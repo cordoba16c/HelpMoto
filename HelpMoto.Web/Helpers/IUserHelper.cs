@@ -21,6 +21,7 @@ namespace HelpMoto.Web.Helpers
         Task<string> GenerateEmailConfirmationTokenAsync(User user);
         Task<string> GeneratePasswordResetTokenAsync(User user);
         Task<IdentityResult> ChangePasswordAsync(User user, string oldPassword, string newPassword);
+
     }
 
 }

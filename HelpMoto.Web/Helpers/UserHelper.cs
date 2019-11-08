@@ -96,5 +96,6 @@ namespace HelpMoto.Web.Helpers
             return await _userManager.ChangePasswordAsync(user, oldPassword, newPassword);
         }
 
+
     }
 }

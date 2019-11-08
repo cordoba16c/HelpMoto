@@ -184,7 +184,7 @@ namespace HelpMoto.Web.Controllers
             if (owner.Motorcycles.Count > 0)
             {
 
-                ModelState.AddModelError(string.Empty, "the owner type can not be removed");
+                
                 return RedirectToAction(nameof(Index));
             }
             await _userHelper.DeleteUserAsync(owner.User.Email);
@@ -276,25 +276,7 @@ namespace HelpMoto.Web.Controllers
             model.MotorcycleTypes = _combosHelper.GetComboMotorcycleTypes();
             return View(model);
         }
-        public async Task<IActionResult> DeleteMotorcycle(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
 
-            var motorcycle = await _dataContext.Motorcycles
-                .Include(m => m.Owner)
-                .FirstOrDefaultAsync(m => m.Id == id.Value);
-            if (motorcycle == null)
-            {
-                return NotFound();
-            }
-
-            _dataContext.Motorcycles.Remove(motorcycle);
-            await _dataContext.SaveChangesAsync();
-            return RedirectToAction($"{nameof(Details)}/{motorcycle.Owner.Id}");
-        }
         public async Task<IActionResult> DetailsMotorcycle(int? id)
         {
             if (id == null)
@@ -386,7 +368,55 @@ namespace HelpMoto.Web.Controllers
             model.WorkshopTypes = _combosHelper.GetComboWorkshopTypes();
             return View(model);
         }
+        public async Task<IActionResult> DeleteHistory(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
 
+            var history = await _dataContext.Histories
+                .Include(h => h.Motorcycle)
+                .FirstOrDefaultAsync(h => h.Id == id.Value);
+            if (history == null)
+            {
+                return NotFound();
+            }
 
+            _dataContext.Histories.Remove(history);
+            await _dataContext.SaveChangesAsync();
+            return RedirectToAction($"{nameof(DetailsMotorcycle)}/{history.Motorcycle.Id}");
+        }
+
+        public async Task<IActionResult> DeleteMotorcycle(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var motorcycle = await _dataContext.Motorcycles
+                .Include(p => p.Owner)
+                .Include(p => p.Histories)
+                .FirstOrDefaultAsync(p => p.Id == id.Value);
+            if (motorcycle == null)
+            {
+                return NotFound();
+            }
+
+            if (motorcycle.Histories.Count > 0)
+            {
+                ModelState.AddModelError(string.Empty, "The Motorcycle can't be deleted because it has related records.");
+                return RedirectToAction($"{nameof(Details)}/{motorcycle.Owner.Id}");
+            }
+
+            _dataContext.Motorcycles.Remove(motorcycle);
+            await _dataContext.SaveChangesAsync();
+            return RedirectToAction($"{nameof(Details)}/{motorcycle.Owner.Id}");
+        }
     }
 }
+
+
+
+

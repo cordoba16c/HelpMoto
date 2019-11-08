@@ -315,6 +315,78 @@ namespace HelpMoto.Web.Controllers
 
             return View(motorcycle);
         }
+        public async Task<IActionResult> AddHistory(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var motorcycle = await _dataContext.Motorcycles.FindAsync(id.Value);
+            if (motorcycle == null)
+            {
+                return NotFound();
+            }
+
+            var model = new HistoryViewModel
+            {
+                InicialDate = DateTime.Now,
+                FinalDate = DateTime.Now,
+                MotorcycleId = motorcycle.Id,
+                WorkshopTypes = _combosHelper.GetComboWorkshopTypes(),
+            };
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AddHistory(HistoryViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var history = await _converterHelper.ToHistoryAsync(model, true);
+                _dataContext.Histories.Add(history);
+                await _dataContext.SaveChangesAsync();
+                return RedirectToAction($"{nameof(DetailsMotorcycle)}/{model.MotorcycleId}");
+            }
+
+            model.WorkshopTypes = _combosHelper.GetComboWorkshopTypes();
+            return View(model);
+        }
+
+        public async Task<IActionResult> EditHistory(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var history = await _dataContext.Histories
+                .Include(h => h.Motorcycle)
+                .Include(h => h.WorkshopType)
+                .FirstOrDefaultAsync(p => p.Id == id.Value);
+            if (history == null)
+            {
+                return NotFound();
+            }
+
+            return View(_converterHelper.ToHistoryViewModel(history));
+        }
+        [HttpPost]
+        public async Task<IActionResult> EditHistory(HistoryViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var history = await _converterHelper.ToHistoryAsync(model, false);
+                _dataContext.Histories.Update(history);
+                await _dataContext.SaveChangesAsync();
+                return RedirectToAction($"{nameof(DetailsMotorcycle)}/{model.MotorcycleId}");
+            }
+
+            model.WorkshopTypes = _combosHelper.GetComboWorkshopTypes();
+            return View(model);
+        }
+
 
     }
 }

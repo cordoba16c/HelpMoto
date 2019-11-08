@@ -28,7 +28,7 @@ namespace HelpMoto.Web.Data.Entities
 
         [Display(Name = "InicialDate")]
         [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode = true)]
-        public DateTime DateLocal => InicialDate.ToLocalTime();
+        public DateTime InicialDateLocal => InicialDate.ToLocalTime();
 
         [Display(Name = "FinalDate")]
         [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode = true)]

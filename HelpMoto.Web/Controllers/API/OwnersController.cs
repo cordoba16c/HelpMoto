@@ -1,25 +1,26 @@
-﻿using HelpMoto.Common.Models;
-using HelpMoto.Web.Data;
+﻿using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Authorization;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using HelpMoto.Common.Models;
+using HelpMoto.Web.Data;
 
 namespace HelpMoto.Web.Controllers.API
 {
     [Route("api/[controller]")]
     [ApiController]
+
     public class OwnersController : ControllerBase
     {
-        private readonly DataContext _context;
+        private readonly DataContext _dataContext;
 
-        public OwnersController(DataContext context)
+        public OwnersController(DataContext dataContext)
         {
-            _context = context;
+            _dataContext = dataContext;
         }
+
         [HttpPost]
         [Route("GetOwnerByEmail")]
         public async Task<IActionResult> GetOwner(EmailRequest emailRequest)
@@ -28,7 +29,8 @@ namespace HelpMoto.Web.Controllers.API
             {
                 return BadRequest();
             }
-            var owner = await _context.Owners
+
+            var owner = await _dataContext.Owners
                 .Include(o => o.User)
                 .Include(o => o.Motorcycles)
                 .ThenInclude(p => p.MotorcycleType)
@@ -36,12 +38,10 @@ namespace HelpMoto.Web.Controllers.API
                 .ThenInclude(p => p.Histories)
                 .ThenInclude(h => h.WorkshopType)
                 .FirstOrDefaultAsync(o => o.User.UserName.ToLower() == emailRequest.Email.ToLower());
-                
 
-            
             var response = new OwnerResponse
             {
-                Id = owner.Id,  
+                Id = owner.Id,
                 FirstName = owner.User.FirstName,
                 LastName = owner.User.LastName,
                 Address = owner.User.Address,
@@ -50,14 +50,11 @@ namespace HelpMoto.Web.Controllers.API
                 PhoneNumber = owner.User.PhoneNumber,
                 Motorcycles = owner.Motorcycles.Select(p => new MotorcycleResponse
                 {
-                    
-                    Id = p.Id,
-                    Name = p.Name,
-                    ImageUrl = p.ImageFullPath,
-                    Brand = p.Brand,
                     Shop = p.Shop,
+                    Id = p.Id,
+                    ImageUrl = p.ImageFullPath,
+                    Name = p.Name,
                     Remarks = p.Remarks,
-                    ShopLocal = p.ShopLocal,
                     MotorcycleType = p.MotorcycleType.Name,
                     Histories = p.Histories.Select(h => new HistoryResponse
                     {
@@ -74,6 +71,4 @@ namespace HelpMoto.Web.Controllers.API
             return Ok(response);
         }
     }
-
 }
- 

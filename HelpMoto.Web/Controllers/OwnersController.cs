@@ -295,5 +295,26 @@ namespace HelpMoto.Web.Controllers
             await _dataContext.SaveChangesAsync();
             return RedirectToAction($"{nameof(Details)}/{motorcycle.Owner.Id}");
         }
+        public async Task<IActionResult> DetailsMotorcycle(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var motorcycle = await _dataContext.Motorcycles
+                .Include(p => p.Owner)
+                .ThenInclude(o => o.User)
+                .Include(p => p.Histories)
+                .ThenInclude(h => h.WorkshopType)
+                .FirstOrDefaultAsync(o => o.Id == id.Value);
+            if (motorcycle == null)
+            {
+                return NotFound();
+            }
+
+            return View(motorcycle);
+        }
+
     }
 }

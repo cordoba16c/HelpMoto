@@ -8,6 +8,9 @@ using Microsoft.EntityFrameworkCore;
 using HelpMoto.Web.Data;
 using HelpMoto.Web.Data.Entities;
 using Microsoft.AspNetCore.Authorization;
+using HelpMoto.Web.Helpers;
+using HelpMoto.Web.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace HelpMoto.Web.Controllers
 {

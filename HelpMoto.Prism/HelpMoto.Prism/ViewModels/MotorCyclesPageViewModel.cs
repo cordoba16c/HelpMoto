@@ -1,4 +1,5 @@
-﻿using Prism.Commands;
+﻿using HelpMoto.Prism.Helpers;
+using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
 using System;
@@ -11,7 +12,7 @@ namespace HelpMoto.Prism.ViewModels
     {
         public MotorCyclesPageViewModel(INavigationService navigationService) : base(navigationService)
         {
-            Title = "Your Motorcycles";
+            Title = Languages.MyMotorCycles;
         }
     }
 }

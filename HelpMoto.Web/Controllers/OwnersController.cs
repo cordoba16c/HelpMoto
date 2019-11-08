@@ -21,7 +21,7 @@ namespace HelpMoto.Web.Controllers
         private readonly ICombosHelper _combosHelper;
         private readonly IConverterHelper _converterHelper;
         private readonly IImageHelper _imageHelper;
-
+       
         public OwnersController(
             DataContext context,
             IUserHelper userHelper,

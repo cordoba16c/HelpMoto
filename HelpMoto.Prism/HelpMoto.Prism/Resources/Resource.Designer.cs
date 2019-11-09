@@ -259,6 +259,15 @@ namespace HelpMoto.Prism.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Error getting your information.
+        /// </summary>
+        public static string OwnerError {
+            get {
+                return ResourceManager.GetString("OwnerError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Password.
         /// </summary>
         public static string Password {

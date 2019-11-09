@@ -1,13 +1,10 @@
-﻿using HelpMoto.Common.Models;
+﻿using HelpMoto.Common.Helpers;
+using HelpMoto.Common.Models;
 using HelpMoto.Common.Services;
 using HelpMoto.Prism.Helpers;
 using Newtonsoft.Json;
 using Prism.Commands;
-using Prism.Mvvm;
 using Prism.Navigation;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace HelpMoto.Prism.ViewModels
 {
@@ -36,7 +33,9 @@ namespace HelpMoto.Prism.ViewModels
         public DelegateCommand RegisterCommand => _registerCommand ?? (_registerCommand = new DelegateCommand(Register));
 
         public DelegateCommand LoginCommand => _loginCommand ?? (_loginCommand = new DelegateCommand(Login));
-        
+
+        public bool IsRemember { get; set; }
+
         public string Email { get; set; }
 
         public string Password
@@ -121,16 +120,16 @@ namespace HelpMoto.Prism.ViewModels
                 IsEnabled = true;
                 await App.Current.MainPage.DisplayAlert(
                     Languages.Error, 
-                    "This user have a big problem, call support.", 
+                    Languages.OwnerError, 
                     Languages.Accept);
                 return;
             }
 
             var owner = response2.Result;
 
-            //Settings.Owner = JsonConvert.SerializeObject(owner);
-            //Settings.Token = JsonConvert.SerializeObject(token);
-            //Settings.IsRemembered = IsRemember;
+            Settings.Owner = JsonConvert.SerializeObject(owner);
+            Settings.Token = JsonConvert.SerializeObject(token);
+            Settings.IsRemembered = IsRemember;
 
 
 

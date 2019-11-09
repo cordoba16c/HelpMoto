@@ -6,5 +6,7 @@ namespace HelpMoto.Web.Helpers
     public interface ICombosHelper
     {
         IEnumerable<SelectListItem> GetComboMotorcycleTypes();
+        IEnumerable<SelectListItem> GetComboWorkshopTypes();
+
     }
 }

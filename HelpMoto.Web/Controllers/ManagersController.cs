@@ -14,7 +14,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace HelpMoto.Web.Controllers
 {
-    [Authorize(Roles = "Admin")]
+
     [Authorize(Roles = "Admin")]
     public class ManagersController : Controller
     {

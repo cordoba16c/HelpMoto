@@ -1,0 +1,31 @@
+﻿@model HelpMoto.Web.Models.HistoryViewModel
+
+<div class="form-group">
+    <label asp-for="InicialDate" class="control-label"></label>
+    <input asp-for="InicialDate" class="form-control" />
+    <span asp-validation-for="InicialDate" class="text-danger"></span>
+</div>
+
+<div class="form-group">
+    <label asp-for="FinalDate" class="control-label"></label>
+    <input asp-for="FinalDate" class="form-control" />
+    <span asp-validation-for="FinalDate" class="text-danger"></span>
+</div>
+
+<div class="form-group">
+    <label asp-for="WorkshopTypeId" class="control-label"></label>
+    <select asp-for="WorkshopTypeId" asp-items="Model.WorkshopTypes" class="form-control"></select>
+    <span asp-validation-for="WorkshopTypeId" class="text-danger"></span>
+</div>
+
+<div class="form-group">
+    <label asp-for="Description" class="control-label"></label>
+    <input asp-for="Description" class="form-control" />
+    <span asp-validation-for="Description" class="text-danger"></span>
+</div>
+
+<div class="form-group">
+    <label asp-for="Remarks" class="control-label"></label>
+    <textarea asp-for="Remarks" class="form-control"></textarea>
+    <span asp-validation-for="Remarks" class="text-danger"></span>
+</div>

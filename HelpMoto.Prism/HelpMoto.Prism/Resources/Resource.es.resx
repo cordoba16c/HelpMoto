@@ -213,4 +213,7 @@
   <data name="DocumentPlaceHolder" xml:space="preserve">
     <value>Ingrese su documento ...</value>
   </data>
+  <data name="OwnerError" xml:space="preserve">
+    <value>Error al obtener su información</value>
+  </data>
 </root>

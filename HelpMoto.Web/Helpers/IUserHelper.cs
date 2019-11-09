@@ -25,6 +25,8 @@ namespace HelpMoto.Web.Helpers
 
         Task<User> GetUserByIdAsync(string userId);
 
+        Task<IdentityResult> ResetPasswordAsync(User user, string token, string password);
+
 
     }
 

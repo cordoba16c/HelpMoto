@@ -41,6 +41,16 @@ namespace HelpMoto.Web.Helpers
                 });
             }
         }
+        public async Task<string> GeneratePasswordResetTokenAsync(User user)
+        {
+            return await _userManager.GeneratePasswordResetTokenAsync(user);
+        }
+
+        public async Task<IdentityResult> ResetPasswordAsync(User user, string token, string password)
+        {
+            return await _userManager.ResetPasswordAsync(user, token, password);
+        }
+
 
         public async Task<User> GetUserByEmailAsync(string email)
         {
@@ -86,10 +96,7 @@ namespace HelpMoto.Web.Helpers
             return await _userManager.GenerateEmailConfirmationTokenAsync(user);
         }
 
-        public async Task<string> GeneratePasswordResetTokenAsync(User user)
-        {
-            return await _userManager.GeneratePasswordResetTokenAsync(user);
-        }
+
 
         public async Task<IdentityResult> ChangePasswordAsync(User user, string oldPassword, string newPassword)
         {

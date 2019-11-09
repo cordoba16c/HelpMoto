@@ -116,11 +116,7 @@ namespace HelpMoto.Web.Helpers
                 password,
                 false);
         }
-        public async Task<User> GetUserByIdAsync(string userId)
-        {
-            return await _userManager.FindByIdAsync(userId);
-        }
-
+       
 
     }
 }

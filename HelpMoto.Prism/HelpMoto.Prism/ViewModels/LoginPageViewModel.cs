@@ -131,6 +131,8 @@ namespace HelpMoto.Prism.ViewModels
             Settings.Token = JsonConvert.SerializeObject(token);
             Settings.IsRemembered = IsRemember;
 
+
+
             IsRunning = false;
             IsEnabled = true;
 

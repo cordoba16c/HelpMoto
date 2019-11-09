@@ -134,9 +134,7 @@ namespace HelpMoto.Web.Data
                 MotorcycleType = motorcycleType,
                 Brand = brand
             });
-        }
-
-        
+        }   
         }
     }
 

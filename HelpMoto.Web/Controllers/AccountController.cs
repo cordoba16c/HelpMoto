@@ -35,11 +35,13 @@ namespace HelpMoto.Web.Controllers
             _dataContext = dataContext;
             _mailHelper = mailHelper;
         }
+
         [HttpGet]
         public IActionResult Login()
         {
             return View();
         }
+
         [HttpPost]
         public async Task<IActionResult> Login(LoginViewModel model)
         {
@@ -62,6 +64,7 @@ namespace HelpMoto.Web.Controllers
 
             return View(model);
         }
+
         [HttpGet]
         public async Task<IActionResult> Logout()
         {
@@ -85,9 +88,9 @@ namespace HelpMoto.Web.Controllers
                     {
                         var claims = new[]
                         {
-                    new Claim(JwtRegisteredClaimNames.Sub, user.Email),
-                    new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
-                };
+                            new Claim(JwtRegisteredClaimNames.Sub, user.Email),
+                            new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
+                        };
 
                         var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Tokens:Key"]));
                         var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
@@ -95,7 +98,7 @@ namespace HelpMoto.Web.Controllers
                             _configuration["Tokens:Issuer"],
                             _configuration["Tokens:Audience"],
                             claims,
-                            expires: DateTime.UtcNow.AddDays(15),
+                            expires: DateTime.UtcNow.AddMonths(4),
                             signingCredentials: credentials);
                         var results = new
                         {
@@ -111,7 +114,10 @@ namespace HelpMoto.Web.Controllers
             return BadRequest();
         }
 
-
+        public IActionResult NotAuthorized()
+        {
+            return View();
+        }
 
         public IActionResult Register()
         {
@@ -148,15 +154,14 @@ namespace HelpMoto.Web.Controllers
                 }, protocol: HttpContext.Request.Scheme);
 
                 _mailHelper.SendMail(model.Username, "Email confirmation", $"<h1>Email Confirmation</h1>" +
-                    $"To allow the user, " +
-                    $"plase click in this link:</br></br><a href = \"{tokenLink}\">Confirm Email</a>");
+            $"To allow the user, " +
+            $"plase click in this link:</br></br><a href = \"{tokenLink}\">Confirm Email</a>");
                 ViewBag.Message = "The instructions to allow your user has been sent to email.";
                 return View(model);
             }
 
             return View(model);
         }
-
 
         private async Task<User> AddUserAsync(AddUserViewModel model)
         {
@@ -181,6 +186,7 @@ namespace HelpMoto.Web.Controllers
             await _userHelper.AddUserToRoleAsync(newUser, "Customer");
             return newUser;
         }
+
         public async Task<IActionResult> ChangeUser()
         {
             var owner = await _dataContext.Owners
@@ -231,6 +237,7 @@ namespace HelpMoto.Web.Controllers
 
             return View(model);
         }
+
         public IActionResult ChangePassword()
         {
             return View();
@@ -262,6 +269,7 @@ namespace HelpMoto.Web.Controllers
 
             return View(model);
         }
+
         public async Task<IActionResult> ConfirmEmail(string userId, string token)
         {
             if (string.IsNullOrEmpty(userId) || string.IsNullOrEmpty(token))
@@ -284,85 +292,6 @@ namespace HelpMoto.Web.Controllers
             return View();
         }
 
-        public IActionResult Register()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Register(AddUserViewModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                var user = await AddUserAsync(model);
-                if (user == null)
-                {
-                    ModelState.AddModelError(string.Empty, "This email is already used.");
-                    return View(model);
-                }
-
-                var owner = new Owner
-                {
-                    Motorcycles = new List<Motorcycle>(),
-                    User = user,
-                };
-
-                _dataContext.Owners.Add(owner);
-                await _dataContext.SaveChangesAsync();
-
-                var myToken = await _userHelper.GenerateEmailConfirmationTokenAsync(user);
-                var tokenLink = Url.Action("ConfirmEmail", "Account", new
-                {
-                    userid = user.Id,
-                    token = myToken
-                }, protocol: HttpContext.Request.Scheme);
-
-                _mailHelper.SendMail(model.Username, "Email confirmation",
-                    $"<table style = 'max-width: 600px; padding: 10px; margin:0 auto; border-collapse: collapse;'>" +
-                    $"  <tr>" +
-                    $"    <td style = 'background-color: #34495e; text-align: center; padding: 0'>" +
-                    $"       <a href = 'https://www.facebook.com/NuskeCIV/' >" +
-                    $"         <img width = '20%' style = 'display:block; margin: 1.5% 3%' src= 'https://veterinarianuske.com/wp-content/uploads/2016/10/line_separator.png'>" +
-                    $"       </a>" +
-                    $"  </td>" +
-                    $"  </tr>" +
-                    $"  <tr>" +
-                    $"  <td style = 'padding: 0'>" +
-                    $"     <img style = 'padding: 0; display: block'  width = '100%'>" +
-                    $"  </td>" +
-                    $"</tr>" +
-                    $"<tr>" +
-                    $" <td style = 'background-color: #ecf0f1'>" +
-                    $"      <div style = 'color: #34495e; margin: 4% 10% 2%; text-align: justify;font-family: sans-serif'>" +
-                    $"            <h1 style = 'color: #e67e22; margin: 0 0 7px' > Hola </h1>" +
-                    $"                    <p style = 'margin: 2px; font-size: 15px'>" +
-                    $"                      La app donde pueden administrar tus motocicletas <br>" +
-                    $"                      Taller autorizado de servicio de mantenimiento correctivo y preventivo de motos..<br>" +
-                    $"                      Entre los servicios tenemos:</p>" +
-                    $"      <ul style = 'font-size: 15px;  margin: 10px 0'>" +
-                    $"        <li> localización de talleres.</li>" +
-                    $"        <li> agendamiento de mantenimientos realizados.</li>" +
-                    $"        <li> Administración de sus motocicletas.</li>" +
-                    $"      </ul>" +
-                    $"  <div style = 'width: 100%;margin:20px 0; display: inline-block;text-align: center'>" +
-                    $"    <img style = 'padding: 0; width: 200px; margin: 5px' src = 'https://veterinarianuske.com/wp-content/uploads/2018/07/tarjetas.png'>" +
-                    $"  </div>" +
-                    $"  <div style = 'width: 100%; text-align: center'>" +
-                    $"    <h2 style = 'color: #e67e22; margin: 0 0 7px' >Email Confirmation </h2>" +
-                    $"    To allow the user,plase click in this link:</ br ></ br > " +
-                    $"    <a style ='text-decoration: none; border-radius: 5px; padding: 11px 23px; color: white; background-color: #3498db' href = \"{tokenLink}\">Confirm Email</a>" +
-                    $"    <p style = 'color: #b3b3b3; font-size: 12px; text-align: center;margin: 30px 0 0' >  2019 </p>" +
-                    $"  </div>" +
-                    $" </td >" +
-                    $"</tr>" +
-                    $"</table>");
-                ViewBag.Message = "The instructions to allow your user has been sent to email.";
-                return View(model);
-            }
-
-            return View(model);
-        }
         public IActionResult RecoverPassword()
         {
             return View();
@@ -423,5 +352,3 @@ namespace HelpMoto.Web.Controllers
         }
     }
 }
-
-

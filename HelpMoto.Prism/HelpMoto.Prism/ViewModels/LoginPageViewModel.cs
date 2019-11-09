@@ -1,6 +1,7 @@
 ﻿using HelpMoto.Common.Models;
 using HelpMoto.Common.Services;
 using HelpMoto.Prism.Helpers;
+using Newtonsoft.Json;
 using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
@@ -99,6 +100,37 @@ namespace HelpMoto.Prism.ViewModels
             };
 
             var response = await _apiService.GetTokenAsync(url, "Account", "/CreateToken", request);
+
+            if (!response.IsSuccess)
+            {
+                IsRunning = false;
+                IsEnabled = true;
+                await App.Current.MainPage.DisplayAlert(
+                    Languages.Error,
+                    Languages.LoginError,
+                    Languages.Accept);
+                Password = string.Empty;
+                return;
+            }
+
+            var token = (TokenResponse)response.Result;
+            var response2 = await _apiService.GetOwnerByEmailAsync(url, "api", "/Owners/GetOwnerByEmail", "bearer", token.Token, Email);
+            if (!response2.IsSuccess)
+            {
+                IsRunning = false;
+                IsEnabled = true;
+                await App.Current.MainPage.DisplayAlert(
+                    Languages.Error, 
+                    "This user have a big problem, call support.", 
+                    Languages.Accept);
+                return;
+            }
+
+            var owner = response2.Result;
+
+            //Settings.Owner = JsonConvert.SerializeObject(owner);
+            //Settings.Token = JsonConvert.SerializeObject(token);
+            //Settings.IsRemembered = IsRemember;
 
             IsRunning = false;
             IsEnabled = true;

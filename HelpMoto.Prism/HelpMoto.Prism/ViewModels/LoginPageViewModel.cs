@@ -100,6 +100,8 @@ namespace HelpMoto.Prism.ViewModels
 
             var response = await _apiService.GetTokenAsync(url, "Account", "/CreateToken", request);
 
+
+
             IsRunning = false;
             IsEnabled = true;
 

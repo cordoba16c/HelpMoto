@@ -3,6 +3,7 @@ using HelpMoto.Web.Data.Entities;
 using HelpMoto.Web.Helpers;
 using HelpMoto.Web.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -141,6 +142,33 @@ namespace HelpMoto.Web.Controllers
 
             return View(model);
         }
+
+        
+        private async Task<User> AddUser(AddUserViewModel view)
+        {
+            var user = new User
+            {
+                Address = view.Address,
+                Document = view.Document,
+                Email = view.Username,
+                FirstName = view.FirstName,
+                LastName = view.LastName,
+                PhoneNumber = view.PhoneNumber,
+                UserName = view.Username
+            };
+
+            var result = await _userHelper.AddUserAsync(user, view.Password);
+            if (result != IdentityResult.Success)
+            {
+                return null;
+            }
+
+            var newUser = await _userHelper.GetUserByEmailAsync(view.Username);
+            await _userHelper.AddUserToRoleAsync(newUser, "Customer");
+            return newUser;
+        }
+
+
 
         [HttpPost]
         [ValidateAntiForgeryToken]

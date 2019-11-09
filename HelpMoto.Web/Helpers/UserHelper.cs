@@ -1,6 +1,7 @@
 ﻿using HelpMoto.Web.Data.Entities;
 using HelpMoto.Web.Models;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Configuration;
 using System.Threading.Tasks;
 
 namespace HelpMoto.Web.Helpers
@@ -10,6 +11,7 @@ namespace HelpMoto.Web.Helpers
         private readonly UserManager<User> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly SignInManager<User> _signInManager;
+        
         public UserHelper(
             UserManager<User> userManager,
             RoleManager<IdentityRole> roleManager,
@@ -18,6 +20,7 @@ namespace HelpMoto.Web.Helpers
             _userManager = userManager;
             _roleManager = roleManager;
             _signInManager = signInManager;
+            
         }
 
         public async Task<IdentityResult> AddUserAsync(User user, string password)
@@ -94,6 +97,17 @@ namespace HelpMoto.Web.Helpers
         public async Task<IdentityResult> ChangePasswordAsync(User user, string oldPassword, string newPassword)
         {
             return await _userManager.ChangePasswordAsync(user, oldPassword, newPassword);
+        }
+        public async Task<SignInResult> ValidatePasswordAsync(User user, string password)
+        {
+            return await _signInManager.CheckPasswordSignInAsync(
+                user,
+                password,
+                false);
+        }
+        public async Task<User> GetUserByIdAsync(string userId)
+        {
+            return await _userManager.FindByIdAsync(userId);
         }
 
 

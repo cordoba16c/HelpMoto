@@ -95,6 +95,17 @@ namespace HelpMoto.Web.Helpers
         {
             return await _userManager.ChangePasswordAsync(user, oldPassword, newPassword);
         }
+        public async Task<IdentityResult> ConfirmEmailAsync(User user, string token)
+        {
+            return await _userManager.ConfirmEmailAsync(user, token);
+        }
+
+        public async Task<User> GetUserByIdAsync(string userId)
+        {
+            return await _userManager.FindByIdAsync(userId);
+        }
+
+
 
 
     }

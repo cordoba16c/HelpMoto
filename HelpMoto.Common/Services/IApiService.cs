@@ -23,5 +23,13 @@ namespace HelpMoto.Common.Services
             TokenRequest request);
 
         Task<bool> CheckConnection(string url);
+
+        Task<Response> PutAsync<T>(
+            string urlBase,
+            string servicePrefix,
+            string controller,
+            T model,
+            string tokenType,
+            string accessToken);
     }
 }

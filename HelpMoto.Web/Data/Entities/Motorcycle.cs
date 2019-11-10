@@ -26,10 +26,9 @@ namespace HelpMoto.Web.Data.Entities
 
         public string Remarks { get; set; }
 
-        //TODO: replace the correct URL for the image
         public string ImageFullPath => string.IsNullOrEmpty(ImageUrl)
             ? null
-            : $"https://TDB.azurewebsites.net{ImageUrl.Substring(1)}";
+            : $"https://helpmoto.azurewebsites.net{ImageUrl.Substring(1)}";
 
         [Display(Name = "Shop")]
         [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}")]

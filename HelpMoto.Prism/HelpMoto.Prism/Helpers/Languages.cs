@@ -52,5 +52,17 @@ namespace HelpMoto.Prism.Helpers
         public static string CheckConnection => Resource.CheckConnection;
 
         public static string OwnerError => Resource.OwnerError;
+
+        public static string Ok => Resource.Ok;
+
+        public static string UserUpdated => Resource.UserUpdated;
+
+        public static string DocumentError => Resource.DocumentError;
+
+        public static string FirstNameError => Resource.FirstNameError;
+        
+        public static string LastNameError => Resource.LastNameError;
+
+        public static string AddressError => Resource.AddressError;
     }
 }

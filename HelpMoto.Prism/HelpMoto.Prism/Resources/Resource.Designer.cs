@@ -79,6 +79,15 @@ namespace HelpMoto.Prism.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You must enter an Address..
+        /// </summary>
+        public static string AddressError {
+            get {
+                return ResourceManager.GetString("AddressError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Enter your address....
         /// </summary>
         public static string AddressPlaceHolder {
@@ -111,6 +120,15 @@ namespace HelpMoto.Prism.Resources {
         public static string Document {
             get {
                 return ResourceManager.GetString("Document", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You must enter a document..
+        /// </summary>
+        public static string DocumentError {
+            get {
+                return ResourceManager.GetString("DocumentError", resourceCulture);
             }
         }
         
@@ -169,6 +187,15 @@ namespace HelpMoto.Prism.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You must enter a FirstName..
+        /// </summary>
+        public static string FirstNameError {
+            get {
+                return ResourceManager.GetString("FirstNameError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Enter your firstname....
         /// </summary>
         public static string FirstnamePlaceHolder {
@@ -192,6 +219,15 @@ namespace HelpMoto.Prism.Resources {
         public static string Lastname {
             get {
                 return ResourceManager.GetString("Lastname", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You must enter a LastName..
+        /// </summary>
+        public static string LastNameError {
+            get {
+                return ResourceManager.GetString("LastNameError", resourceCulture);
             }
         }
         
@@ -255,6 +291,15 @@ namespace HelpMoto.Prism.Resources {
         public static string MyMotorCycles {
             get {
                 return ResourceManager.GetString("MyMotorCycles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ok.
+        /// </summary>
+        public static string Ok {
+            get {
+                return ResourceManager.GetString("Ok", resourceCulture);
             }
         }
         
@@ -354,6 +399,15 @@ namespace HelpMoto.Prism.Resources {
         public static string Saving {
             get {
                 return ResourceManager.GetString("Saving", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User updated succesfully..
+        /// </summary>
+        public static string UserUpdated {
+            get {
+                return ResourceManager.GetString("UserUpdated", resourceCulture);
             }
         }
     }

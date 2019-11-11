@@ -216,4 +216,22 @@
   <data name="OwnerError" xml:space="preserve">
     <value>Error getting your information</value>
   </data>
+  <data name="Ok" xml:space="preserve">
+    <value>Ok</value>
+  </data>
+  <data name="UserUpdated" xml:space="preserve">
+    <value>User updated succesfully.</value>
+  </data>
+  <data name="DocumentError" xml:space="preserve">
+    <value>You must enter a document.</value>
+  </data>
+  <data name="FirstNameError" xml:space="preserve">
+    <value>You must enter a FirstName.</value>
+  </data>
+  <data name="LastNameError" xml:space="preserve">
+    <value>You must enter a LastName.</value>
+  </data>
+  <data name="AddressError" xml:space="preserve">
+    <value>You must enter an Address.</value>
+  </data>
 </root>

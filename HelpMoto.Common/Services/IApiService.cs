@@ -31,5 +31,13 @@ namespace HelpMoto.Common.Services
             T model,
             string tokenType,
             string accessToken);
+
+        Task<Response> ChangePasswordAsync(
+            string urlBase,
+            string servicePrefix,
+            string controller,
+            ChangePasswordRequest changePasswordRequest,
+            string tokenType,
+            string accessToken);
     }
 }

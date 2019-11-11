@@ -9,6 +9,9 @@
              BackgroundColor="{StaticResource colorBackgroud}"
              Title="{Binding Title}">
 
+    <ContentPage.ToolbarItems>
+        <ToolbarItem IconImageSource="ic_action_add_circle" Command="{Binding AddMotorCycleCommand}"/>
+    </ContentPage.ToolbarItems>
     <StackLayout
         Padding="6">
         <ListView

@@ -97,6 +97,33 @@ namespace HelpMoto.Prism.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Brand.
+        /// </summary>
+        public static string Brand {
+            get {
+                return ResourceManager.GetString("Brand", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You must enter the mototcycle brand..
+        /// </summary>
+        public static string BrandError {
+            get {
+                return ResourceManager.GetString("BrandError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter a brand....
+        /// </summary>
+        public static string BrandPlaceHolder {
+            get {
+                return ResourceManager.GetString("BrandPlaceHolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Change Password.
         /// </summary>
         public static string ChangePassword {
@@ -111,6 +138,69 @@ namespace HelpMoto.Prism.Resources {
         public static string CheckConnection {
             get {
                 return ResourceManager.GetString("CheckConnection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cilinder.
+        /// </summary>
+        public static string Cilinder {
+            get {
+                return ResourceManager.GetString("Cilinder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You must enter the motorcycle cilinder..
+        /// </summary>
+        public static string CilinderError {
+            get {
+                return ResourceManager.GetString("CilinderError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter a cilinder.
+        /// </summary>
+        public static string CilinderPlaceHolder {
+            get {
+                return ResourceManager.GetString("CilinderPlaceHolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Confirm.
+        /// </summary>
+        public static string Confirm {
+            get {
+                return ResourceManager.GetString("Confirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to created.
+        /// </summary>
+        public static string Created {
+            get {
+                return ResourceManager.GetString("Created", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The Motorcycle was {0} sucessfully.
+        /// </summary>
+        public static string CreateEditMotorcycleConfirm {
+            get {
+                return ResourceManager.GetString("CreateEditMotorcycleConfirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete.
+        /// </summary>
+        public static string Delete {
+            get {
+                return ResourceManager.GetString("Delete", resourceCulture);
             }
         }
         
@@ -138,6 +228,15 @@ namespace HelpMoto.Prism.Resources {
         public static string DocumentPlaceHolder {
             get {
                 return ResourceManager.GetString("DocumentPlaceHolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to edited.
+        /// </summary>
+        public static string Edited {
+            get {
+                return ResourceManager.GetString("Edited", resourceCulture);
             }
         }
         
@@ -286,11 +385,47 @@ namespace HelpMoto.Prism.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Motorcycle Type.
+        /// </summary>
+        public static string MotorcycleType {
+            get {
+                return ResourceManager.GetString("MotorcycleType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You must select a motorcycle type..
+        /// </summary>
+        public static string MotorcycleTypeError {
+            get {
+                return ResourceManager.GetString("MotorcycleTypeError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select a motorcycle type...
+        /// </summary>
+        public static string MotorcycleTypePlaceHolder {
+            get {
+                return ResourceManager.GetString("MotorcycleTypePlaceHolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to My motorcycles.
         /// </summary>
         public static string MyMotorCycles {
             get {
                 return ResourceManager.GetString("MyMotorCycles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No.
+        /// </summary>
+        public static string No {
+            get {
+                return ResourceManager.GetString("No", resourceCulture);
             }
         }
         
@@ -367,6 +502,15 @@ namespace HelpMoto.Prism.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure to delete the motorcycle?.
+        /// </summary>
+        public static string QuestionToDeleteMotorcycle {
+            get {
+                return ResourceManager.GetString("QuestionToDeleteMotorcycle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Register.
         /// </summary>
         public static string Register {
@@ -403,11 +547,29 @@ namespace HelpMoto.Prism.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Shop.
+        /// </summary>
+        public static string Shop {
+            get {
+                return ResourceManager.GetString("Shop", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to User updated succesfully..
         /// </summary>
         public static string UserUpdated {
             get {
                 return ResourceManager.GetString("UserUpdated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Yes.
+        /// </summary>
+        public static string Yes {
+            get {
+                return ResourceManager.GetString("Yes", resourceCulture);
             }
         }
     }

@@ -37,6 +37,7 @@ namespace HelpMoto.Prism
             containerRegistry.RegisterForNavigation<HelpMotoMasterDetailPage, HelpMotoMasterDetailPageViewModel>();
             containerRegistry.RegisterForNavigation<ProfilePage, ProfilePageViewModel>();
             containerRegistry.RegisterForNavigation<MotorCyclePage, MotorCyclePageViewModel>();
+            containerRegistry.RegisterForNavigation<EditMotorCyclePage, EditMotorCyclePageViewModel>();
         }
     }
 }

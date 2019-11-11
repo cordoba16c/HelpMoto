@@ -29,7 +29,7 @@ namespace HelpMoto.Web.Data
             await CheckOwnerAsync(customer);
             await CheckManagerAsync(manager);
             await CheckWorkshopTypesAsync();
-            
+
         }
 
         private async Task CheckRoles()

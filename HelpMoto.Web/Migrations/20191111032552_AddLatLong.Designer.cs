@@ -4,14 +4,16 @@ using HelpMoto.Web.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace HelpMoto.Web.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20191111032552_AddLatLong")]
+    partial class AddLatLong
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -191,38 +193,6 @@ namespace HelpMoto.Web.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
-            modelBuilder.Entity("HelpMoto.Web.Data.Entities.Workshop", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Address")
-                        .HasMaxLength(100);
-
-                    b.Property<string>("ContactName")
-                        .IsRequired()
-                        .HasMaxLength(50);
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(50);
-
-                    b.Property<string>("PhoneName")
-                        .IsRequired()
-                        .HasMaxLength(50);
-
-                    b.Property<string>("Remarks");
-
-                    b.Property<int?>("WorkshopTypeId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("WorkshopTypeId");
-
-                    b.ToTable("Workshop");
-                });
-
             modelBuilder.Entity("HelpMoto.Web.Data.Entities.WorkshopType", b =>
                 {
                     b.Property<int>("Id")
@@ -235,7 +205,7 @@ namespace HelpMoto.Web.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("WorkshopType");
+                    b.ToTable("WorkshopTypes");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -382,13 +352,6 @@ namespace HelpMoto.Web.Migrations
                     b.HasOne("HelpMoto.Web.Data.Entities.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId");
-                });
-
-            modelBuilder.Entity("HelpMoto.Web.Data.Entities.Workshop", b =>
-                {
-                    b.HasOne("HelpMoto.Web.Data.Entities.WorkshopType", "WorkshopType")
-                        .WithMany("Workshop")
-                        .HasForeignKey("WorkshopTypeId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

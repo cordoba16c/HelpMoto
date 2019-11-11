@@ -12,14 +12,14 @@ namespace HelpMoto.Prism.ViewModels
     public class MotorCycleItemViewModel : MotorcycleResponse
     {
         private readonly INavigationService _navigationService;
-        private DelegateCommand _selectPetCommand;
+        private DelegateCommand _selectMotorcycleCommand;
 
         public MotorCycleItemViewModel(INavigationService navigationService)
         {
             _navigationService = navigationService;
         }
 
-        public DelegateCommand SelectPetCommand => _selectPetCommand ?? (_selectPetCommand = new DelegateCommand(SelectMotorCycle));
+        public DelegateCommand SelectMotorcycleCommand => _selectMotorcycleCommand ?? (_selectMotorcycleCommand = new DelegateCommand(SelectMotorCycle));
 
         private async void SelectMotorCycle()
         {

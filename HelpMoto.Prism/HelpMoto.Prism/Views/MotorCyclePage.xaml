@@ -50,7 +50,7 @@
                         Grid.Column="0"
                         Grid.Row="1"
                         FontAttributes="Bold"
-                        Text="Race"/>
+                        Text="{i18n:Translate Brand}"/>
                     <Label
                         Grid.Column="1"
                         Grid.Row="1"
@@ -72,7 +72,7 @@
                     <Label
                         Grid.Column="1"
                         Grid.Row="3"
-                        Text="{Binding Motorcycle.MotorcycleType.Name}"/>
+                        Text="{Binding Motorcycle.MotorcycleType}"/>
                     <Label
                         Grid.Column="0"
                         Grid.Row="4"

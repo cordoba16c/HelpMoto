@@ -11,7 +11,7 @@ namespace HelpMoto.Web.Controllers.API
     [Route("api/[controller]")]
     [ApiController]
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
-    public class MotorcycleTypesController : ControllerBase
+    public class MotorcycleTypesController : Controller
     {
         private readonly DataContext _dataContext;
 

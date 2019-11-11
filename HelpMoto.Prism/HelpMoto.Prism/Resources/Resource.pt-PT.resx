@@ -240,9 +240,6 @@
   <data name="MotorcycleTypePlaceHolder" xml:space="preserve">
     <value>Selecione um tipo de motocicleta ..</value>
   </data>
-  <data name="Shop" xml:space="preserve">
-    <value>Comprar</value>
-  </data>
   <data name="Brand" xml:space="preserve">
     <value>marca</value>
   </data>
@@ -293,5 +290,32 @@
   </data>
   <data name="Remarks" xml:space="preserve">
     <value>Observações</value>
+  </data>
+  <data name="MotorcycleGetError" xml:space="preserve">
+    <value>Erro ao obter tipos de motocicleta, tente mais tarde.</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancelar</value>
+  </data>
+  <data name="QuestionToObtainImage" xml:space="preserve">
+    <value>Onde você quer tirar uma foto ?</value>
+  </data>
+  <data name="FromGallery" xml:space="preserve">
+    <value>Galeria</value>
+  </data>
+  <data name="FromCamera" xml:space="preserve">
+    <value>Da Câmara</value>
+  </data>
+  <data name="EditMotorcycle" xml:space="preserve">
+    <value>Editar motocicleta</value>
+  </data>
+  <data name="NewMotorcycle" xml:space="preserve">
+    <value>Nova motocicleta</value>
+  </data>
+  <data name="Shop" xml:space="preserve">
+    <value>Comprado</value>
+  </data>
+  <data name="DetailMotorcycle" xml:space="preserve">
+    <value>Detalhe da motocicleta</value>
   </data>
 </root>

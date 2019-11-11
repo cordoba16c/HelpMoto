@@ -241,7 +241,7 @@
     <value>Select a motorcycle type..</value>
   </data>
   <data name="Shop" xml:space="preserve">
-    <value>Shop</value>
+    <value>Purchased</value>
   </data>
   <data name="Brand" xml:space="preserve">
     <value>Brand</value>
@@ -293,5 +293,29 @@
   </data>
   <data name="Remarks" xml:space="preserve">
     <value>Remarks</value>
+  </data>
+  <data name="MotorcycleGetError" xml:space="preserve">
+    <value>Error getting motorcycle types, please try later.</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="QuestionToObtainImage" xml:space="preserve">
+    <value>Where do you want to get the picture?</value>
+  </data>
+  <data name="FromGallery" xml:space="preserve">
+    <value>From gallery</value>
+  </data>
+  <data name="FromCamera" xml:space="preserve">
+    <value>From camera</value>
+  </data>
+  <data name="EditMotorcycle" xml:space="preserve">
+    <value>Edit Motorcycle</value>
+  </data>
+  <data name="NewMotorcycle" xml:space="preserve">
+    <value>New Motorcycle</value>
+  </data>
+  <data name="DetailMotorcycle" xml:space="preserve">
+    <value>Detail Motorcycle</value>
   </data>
 </root>

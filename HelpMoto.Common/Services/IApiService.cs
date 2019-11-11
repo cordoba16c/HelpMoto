@@ -64,5 +64,12 @@ namespace HelpMoto.Common.Services
             int id,
             string tokenType,
             string accessToken);
+
+        Task<Response> GetListAsync<T>(
+            string urlBase,
+            string servicePrefix,
+            string controller,
+            string tokenType,
+            string accessToken);
     }
 }

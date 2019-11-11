@@ -25,7 +25,8 @@
                         CacheDuration= "50"
                         RetryCount= "3"
                         RetryDelay= "600"
-                        DownsampleToViewSize = "true">
+                        DownsampleToViewSize = "true"
+                        HeightRequest="200">
                         <ffimageloading:CachedImage.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding ChangeImageCommand}"/>
                         </ffimageloading:CachedImage.GestureRecognizers>

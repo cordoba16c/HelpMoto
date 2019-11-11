@@ -35,10 +35,10 @@ namespace HelpMoto.Prism.ViewModels
 
         public EditMotorCyclePageViewModel(INavigationService navigationService,
                                            IApiService apiService) : base(navigationService)
-        {            
+        {
             _navigationService = navigationService;
             _apiService = apiService;
-            IsEnabled = true;
+            IsEnabled = true;            
         }
 
         public DelegateCommand DeleteCommand => _deleteCommand ?? (_deleteCommand = new DelegateCommand(DeleteAsync));
@@ -75,6 +75,28 @@ namespace HelpMoto.Prism.ViewModels
         {
             get => _imageSource;
             set => SetProperty(ref _imageSource, value);
+        }
+
+        public override void OnNavigatedTo(INavigationParameters parameters)
+        {
+            base.OnNavigatedTo(parameters);
+
+            if (parameters.ContainsKey("pet"))
+            {
+                MotorCycle = parameters.GetValue<MotorcycleResponse>("motorcycle");
+                ImageSource = MotorCycle.ImageUrl;
+                IsEdit = true;
+                Title = "Edit Pet";
+            }
+            else
+            {
+                MotorCycle = new MotorcycleResponse { Shop = DateTime.Today };
+                ImageSource = "icon_no_image_add";
+                IsEdit = false;
+                Title = "New Pet";
+            }
+
+            //LoadPetTypesAsync();
         }
 
         private async void ChangeImageAsync()

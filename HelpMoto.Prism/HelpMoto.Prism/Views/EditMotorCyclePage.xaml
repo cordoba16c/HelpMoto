@@ -75,12 +75,12 @@
 
                         <Label
                 	        Grid.Column="0"
-                	        Grid.Row="1"
+                	        Grid.Row="2"
                 	        Text="{i18n:Translate Cilinder}"
                 	        VerticalOptions="Center"/>
                         <Entry
                 	        Grid.Column="1"
-                	        Grid.Row="1"
+                	        Grid.Row="2"
                 	        Placeholder="{i18n:Translate CilinderPlaceHolder}"
                 	        Text="{Binding MotorCycle.Name}"/>
 

@@ -100,5 +100,9 @@ namespace HelpMoto.Prism.Helpers
         public static string CilinderError => Resource.CilinderError;
 
         public static string Confirm => Resource.Confirm;
+
+        public static string ChangeImage => Resource.ChangeImage;
+
+        public static string Remarks => Resource.Remarks;
     }
 }

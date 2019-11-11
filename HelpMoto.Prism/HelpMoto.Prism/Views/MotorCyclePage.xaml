@@ -41,7 +41,7 @@
                         Grid.Column="0"
                         Grid.Row="0"
                         FontAttributes="Bold"
-                        Text="Name"/>
+                        Text="{i18n:Translate Cilinder}"/>
                     <Label
                         Grid.Column="1"
                         Grid.Row="0"
@@ -54,30 +54,30 @@
                     <Label
                         Grid.Column="1"
                         Grid.Row="1"
-                        Text="{Binding Motorcycle.Race}"/>
+                        Text="{Binding Motorcycle.Brand}"/>
                     <Label
                         Grid.Column="0"
                         Grid.Row="2"
                         FontAttributes="Bold"
-                        Text="Born"/>
+                        Text="{i18n:Translate Shop}"/>
                     <Label
                         Grid.Column="1"
                         Grid.Row="2"
-                        Text="{Binding Motorcycle.Born, StringFormat='{0:yyyy/MM/dd}'}"/>
+                        Text="{Binding Motorcycle.Shop, StringFormat='{0:yyyy/MM/dd}'}"/>
                     <Label
                         Grid.Column="0"
                         Grid.Row="3"
                         FontAttributes="Bold"
-                        Text="Pet Type"/>
+                        Text="{i18n:Translate MotorcycleType}"/>
                     <Label
                         Grid.Column="1"
                         Grid.Row="3"
-                        Text="{Binding Motorcycle.PetType}"/>
+                        Text="{Binding Motorcycle.MotorcycleType.Name}"/>
                     <Label
                         Grid.Column="0"
                         Grid.Row="4"
                         FontAttributes="Bold"
-                        Text="Remarks"/>
+                        Text="{i18n:Translate Remarks}"/>
                     <Label
                         Grid.Column="1"
                         Grid.Row="4"
@@ -86,7 +86,7 @@
             </StackLayout>
         </ScrollView>
         <Button
-            Command="{Binding EditPetCommand}"
+            Command="{Binding EditMotorcycleCommand}"
             Text="Edit Pet"/>
     </StackLayout>
 

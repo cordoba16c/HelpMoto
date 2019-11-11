@@ -234,4 +234,58 @@
   <data name="AddressError" xml:space="preserve">
     <value>Vous devez indiquer une adresse.</value>
   </data>
+  <data name="MotorcycleType" xml:space="preserve">
+    <value>Type de moto</value>
+  </data>
+  <data name="MotorcycleTypePlaceHolder" xml:space="preserve">
+    <value>Sélectionnez un type de moto ..</value>
+  </data>
+  <data name="Shop" xml:space="preserve">
+    <value>Magasin</value>
+  </data>
+  <data name="Brand" xml:space="preserve">
+    <value>Marque</value>
+  </data>
+  <data name="BrandPlaceHolder" xml:space="preserve">
+    <value>un marque</value>
+  </data>
+  <data name="Cilinder" xml:space="preserve">
+    <value>Cilinder</value>
+  </data>
+  <data name="CilinderPlaceHolder" xml:space="preserve">
+    <value>Entrez un cilinder</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Supprimer...</value>
+  </data>
+  <data name="Edited" xml:space="preserve">
+    <value>modifié</value>
+  </data>
+  <data name="Created" xml:space="preserve">
+    <value>créé</value>
+  </data>
+  <data name="CreateEditMotorcycleConfirm" xml:space="preserve">
+    <value>La moto a réussi {0}</value>
+  </data>
+  <data name="QuestionToDeleteMotorcycle" xml:space="preserve">
+    <value>Etes-vous sûr de vouloir supprimer le</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Oui</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>Non</value>
+  </data>
+  <data name="MotorcycleTypeError" xml:space="preserve">
+    <value>Vous devez sélectionner un type de moto.</value>
+  </data>
+  <data name="BrandError" xml:space="preserve">
+    <value>Vous devez entrer la marque de moto.</value>
+  </data>
+  <data name="CilinderError" xml:space="preserve">
+    <value>Vous devez entrer dans le cylindre de moto.</value>
+  </data>
+  <data name="Confirm" xml:space="preserve">
+    <value>Confirmer</value>
+  </data>
 </root>

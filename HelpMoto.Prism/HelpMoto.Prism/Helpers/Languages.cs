@@ -64,5 +64,41 @@ namespace HelpMoto.Prism.Helpers
         public static string LastNameError => Resource.LastNameError;
 
         public static string AddressError => Resource.AddressError;
+
+        public static string MotorcycleType => Resource.MotorcycleType;
+
+        public static string MotorcycleTypePlaceHolder => Resource.MotorcycleTypePlaceHolder;
+
+        public static string Shop => Resource.Shop;
+
+        public static string Brand => Resource.Brand;
+
+        public static string BrandPlaceHolder => Resource.BrandPlaceHolder;
+
+        public static string Cilinder => Resource.Cilinder;
+
+        public static string CilinderPlaceHolder => Resource.CilinderPlaceHolder;
+
+        public static string Delete => Resource.Delete;
+
+        public static string Edited => Resource.Edited;
+
+        public static string Created => Resource.Created;
+
+        public static string CreateEditMotorcycleConfirm => Resource.CreateEditMotorcycleConfirm;
+
+        public static string QuestionToDeleteMotorcycle => Resource.QuestionToDeleteMotorcycle;
+
+        public static string Yes => Resource.Yes;
+
+        public static string No => Resource.No;
+
+        public static string MotorcycleTypeError => Resource.MotorcycleTypeError;
+
+        public static string BrandError => Resource.BrandError;
+
+        public static string CilinderError => Resource.CilinderError;
+
+        public static string Confirm => Resource.Confirm;
     }
 }

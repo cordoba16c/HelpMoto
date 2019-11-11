@@ -104,6 +104,7 @@ namespace HelpMoto.Web.Controllers
                     try
                     {
                         await _dataContext.SaveChangesAsync();
+
                         var myToken = await _userHelper.GenerateEmailConfirmationTokenAsync(user);
                         var tokenLink = Url.Action("ConfirmEmail", "Account", new
                         {

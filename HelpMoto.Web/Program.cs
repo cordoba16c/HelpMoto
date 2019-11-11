@@ -12,6 +12,7 @@ namespace HelpMoto.Web
             var host = CreateWebHostBuilder(args).Build();
             RunSeeding(host);
             host.Run();
+
         }
 
         private static void RunSeeding(IWebHost host)

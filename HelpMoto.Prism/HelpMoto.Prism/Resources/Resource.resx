@@ -288,4 +288,10 @@
   <data name="Confirm" xml:space="preserve">
     <value>Confirm</value>
   </data>
+  <data name="ChangeImage" xml:space="preserve">
+    <value>Tap on image to change it.</value>
+  </data>
+  <data name="Remarks" xml:space="preserve">
+    <value>Remarks</value>
+  </data>
 </root>

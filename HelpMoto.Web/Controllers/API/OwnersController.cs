@@ -54,6 +54,7 @@ namespace HelpMoto.Web.Controllers.API
                     Id = p.Id,
                     ImageUrl = p.ImageFullPath,
                     Name = p.Name,
+                    Brand = p.Brand,
                     Remarks = p.Remarks,
                     MotorcycleType = p.MotorcycleType.Name,
                     Histories = p.Histories.Select(h => new HistoryResponse

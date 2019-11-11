@@ -237,7 +237,7 @@ namespace HelpMoto.Web.Controllers
                 return NotFound();
             }
 
-            var model = new MotorcycleViewModel
+            var model = new  MotorcycleViewModel
             {
                 Shop = DateTime.Today,
                 OwnerId = owner.Id,
@@ -268,6 +268,7 @@ namespace HelpMoto.Web.Controllers
             model.MotorcycleTypes = _combosHelper.GetComboMotorcycleTypes();
             return View(model);
         }
+
         public async Task<IActionResult> EditMotorcycle(int? id)
         {
             if (id == null)

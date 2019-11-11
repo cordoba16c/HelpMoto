@@ -38,7 +38,7 @@
                                 <ffimageloading:CachedImage
                                         Grid.Column="0"
                                         HeightRequest="30"
-                                        Source="{Binding ImageSource}"
+                                        Source="{Binding ImageUrl}"
                                         WidthRequest="60">
                                 </ffimageloading:CachedImage>
                                 <StackLayout

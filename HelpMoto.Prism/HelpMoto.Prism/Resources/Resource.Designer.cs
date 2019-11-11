@@ -223,6 +223,15 @@ namespace HelpMoto.Prism.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Detail Motorcycle.
+        /// </summary>
+        public static string DetailMotorcycle {
+            get {
+                return ResourceManager.GetString("DetailMotorcycle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Document.
         /// </summary>
         public static string Document {

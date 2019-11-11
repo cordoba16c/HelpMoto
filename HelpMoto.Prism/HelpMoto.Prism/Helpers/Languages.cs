@@ -118,5 +118,7 @@ namespace HelpMoto.Prism.Helpers
         public static string EditMotorcycle => Resource.EditMotorcycle;
 
         public static string NewMotorcycle => Resource.NewMotorcycle;
+
+        public static string DetailMotorcycle => Resource.DetailMotorcycle;
     }
 }

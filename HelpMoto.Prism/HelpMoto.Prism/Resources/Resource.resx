@@ -315,4 +315,7 @@
   <data name="NewMotorcycle" xml:space="preserve">
     <value>New Motorcycle</value>
   </data>
+  <data name="DetailMotorcycle" xml:space="preserve">
+    <value>Detail Motorcycle</value>
+  </data>
 </root>

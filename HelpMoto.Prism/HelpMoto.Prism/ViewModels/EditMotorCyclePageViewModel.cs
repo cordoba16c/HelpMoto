@@ -93,7 +93,7 @@ namespace HelpMoto.Prism.ViewModels
         {
             base.OnNavigatedTo(parameters);
 
-            if (parameters.ContainsKey("pet"))
+            if (parameters.ContainsKey("motorcycle"))
             {
                 MotorCycle = parameters.GetValue<MotorcycleResponse>("motorcycle");
                 ImageSource = MotorCycle.ImageUrl;

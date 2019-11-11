@@ -170,13 +170,13 @@ namespace HelpMoto.Prism.ViewModels
                 Languages.FromGallery,
                 Languages.FromCamera);
 
-            if (source == "Cancel")
+            if (source == Languages.Cancel)
             {
                 _file = null;
                 return;
             }
 
-            if (source == "From camera")
+            if (source == Languages.FromCamera)
             {
                 _file = await CrossMedia.Current.TakePhotoAsync(
                     new StoreCameraMediaOptions
@@ -262,7 +262,7 @@ namespace HelpMoto.Prism.ViewModels
                 string.Format(Languages.CreateEditMotorcycleConfirm, IsEdit ? Languages.Edited : Languages.Created),
                 Languages.Accept);
 
-            await MotorCyclesPageViewModel.GetInstance().UpdateOwnerAsync();
+            //await MotorCyclesPageViewModel.GetInstance().UpdateOwnerAsync();
             await _navigationService.GoBackToRootAsync();
         }
 

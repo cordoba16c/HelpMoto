@@ -104,5 +104,19 @@ namespace HelpMoto.Prism.Helpers
         public static string ChangeImage => Resource.ChangeImage;
 
         public static string Remarks => Resource.Remarks;
+
+        public static string MotorcycleGetError => Resource.MotorcycleGetError;
+
+        public static string Cancel => Resource.Cancel;
+
+        public static string QuestionToObtainImage => Resource.QuestionToObtainImage;
+
+        public static string FromGallery => Resource.FromGallery;
+
+        public static string FromCamera => Resource.FromCamera;
+
+        public static string EditMotorcycle => Resource.EditMotorcycle;
+
+        public static string NewMotorcycle => Resource.NewMotorcycle;
     }
 }

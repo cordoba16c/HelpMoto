@@ -26,8 +26,8 @@ namespace HelpMoto.Prism.ViewModels
         private bool _isRunning;
         private bool _isEnabled;
         private bool _isEdit;
-        //private ObservableCollection<PetTypeResponse> _petTypes;
-        //private PetTypeResponse _petType;
+        private ObservableCollection<MotorcycleTypeResponse> _motorcycleTypes;
+        private MotorcycleTypeResponse _motorcycleType;
         private MediaFile _file;
         private DelegateCommand _changeImageCommand;
         private DelegateCommand _saveCommand;
@@ -46,6 +46,18 @@ namespace HelpMoto.Prism.ViewModels
         public DelegateCommand SaveCommand => _saveCommand ?? (_saveCommand = new DelegateCommand(SaveAsync));
 
         public DelegateCommand ChangeImageCommand => _changeImageCommand ?? (_changeImageCommand = new DelegateCommand(ChangeImageAsync));
+
+        public ObservableCollection<MotorcycleTypeResponse> MotorcycleTypes
+        {
+            get => _motorcycleTypes;
+            set => SetProperty(ref _motorcycleTypes, value);
+        }
+
+        public MotorcycleTypeResponse MotorcycleType
+        {
+            get => _motorcycleType;
+            set => SetProperty(ref _motorcycleType, value);
+        }
 
         public bool IsRunning
         {
@@ -86,17 +98,65 @@ namespace HelpMoto.Prism.ViewModels
                 MotorCycle = parameters.GetValue<MotorcycleResponse>("motorcycle");
                 ImageSource = MotorCycle.ImageUrl;
                 IsEdit = true;
-                Title = "Edit Pet";
+                Title = Languages.EditMotorcycle;
             }
             else
             {
                 MotorCycle = new MotorcycleResponse { Shop = DateTime.Today };
                 ImageSource = "icon_no_image_add";
                 IsEdit = false;
-                Title = "New Pet";
+                Title = Languages.NewMotorcycle;
             }
 
-            //LoadPetTypesAsync();
+            LoadMotorcycleTypesAsync();
+        }
+
+        private async void LoadMotorcycleTypesAsync()
+        {
+            IsEnabled = false;
+
+            var url = App.Current.Resources["UrlAPI"].ToString();
+            var token = JsonConvert.DeserializeObject<TokenResponse>(Settings.Token);
+
+            var connection = await _apiService.CheckConnection(url);
+            if (!connection)
+            {
+                IsEnabled = true;
+                IsRunning = false;
+                await App.Current.MainPage.DisplayAlert(
+                    Languages.Error,
+                    Languages.CheckConnection,
+                    Languages.Accept);
+                await _navigationService.GoBackAsync();
+                return;
+            }
+
+            var response = await _apiService.GetListAsync<MotorcycleTypeResponse>(
+                url,
+                "/api",
+                "/MotorcycleTypes",
+                "bearer",
+                token.Token);
+
+            IsEnabled = true;
+
+            if (!response.IsSuccess)
+            {
+                await App.Current.MainPage.DisplayAlert(
+                    Languages.Error,
+                    Languages.MotorcycleGetError,
+                    Languages.Accept);
+                await _navigationService.GoBackAsync();
+                return;
+            }
+
+            var motorcycleTypes = (List<MotorcycleTypeResponse>)response.Result;
+            MotorcycleTypes = new ObservableCollection<MotorcycleTypeResponse>(motorcycleTypes);
+
+            if (!string.IsNullOrEmpty(MotorCycle.MotorcycleType))
+            {
+                MotorcycleType = MotorcycleTypes.FirstOrDefault(mt => mt.Name == MotorCycle.MotorcycleType);
+            }
         }
 
         private async void ChangeImageAsync()
@@ -104,11 +164,11 @@ namespace HelpMoto.Prism.ViewModels
             await CrossMedia.Current.Initialize();
 
             var source = await Application.Current.MainPage.DisplayActionSheet(
-                "Where do you want to get the picture?",
-                "Cancel",
+                Languages.QuestionToObtainImage,
+                Languages.Cancel,
                 null,
-                "From gallery",
-                "From camera");
+                Languages.FromGallery,
+                Languages.FromCamera);
 
             if (source == "Cancel")
             {
@@ -170,8 +230,8 @@ namespace HelpMoto.Prism.ViewModels
                 ImageArray = imageArray,
                 Name = MotorCycle.Name,
                 OwnerId = owner.Id,
-                MotorcycleTypeId = MotorCycle.Id,
-                Brand = MotorCycle.Brand,                
+                MotorcycleTypeId = MotorcycleType.Id,
+                Brand = MotorCycle.Brand, 
                 Remarks = MotorCycle.Remarks
             };
 
@@ -179,12 +239,12 @@ namespace HelpMoto.Prism.ViewModels
             if (IsEdit)
             {
                 response = await _apiService.PutAsync(
-                    url, "/api", "/Pets", motorcycleRequest.Id, motorcycleRequest, "bearer", token.Token);
+                    url, "/api", "/Motorcycle", motorcycleRequest.Id, motorcycleRequest, "bearer", token.Token);
             }
             else
             {
                 response = await _apiService.PostAsync(
-                    url, "/api", "/Pets", motorcycleRequest, "bearer", token.Token);
+                    url, "/api", "/Motorcycle", motorcycleRequest, "bearer", token.Token);
             }
 
             IsRunning = false;
@@ -222,12 +282,12 @@ namespace HelpMoto.Prism.ViewModels
                 return false;
             }
 
-            //if (PetType == null)
-            //{
-            //    await App.Current.MainPage.DisplayAlert(
-            //        Languages.Error, Languages.PetTypeError, Languages.Accept);
-            //    return false;
-            //}
+            if (MotorcycleType == null)
+            {
+                await App.Current.MainPage.DisplayAlert(
+                    Languages.Error, Languages.MotorcycleTypeError, Languages.Accept);
+                return false;
+            }
 
             return true;
         }

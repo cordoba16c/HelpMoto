@@ -17,6 +17,6 @@ namespace HelpMoto.Web.Data
         public DbSet<Manager> Managers { get; set; }
 
         public DbSet<WorkshopType> WorkshopTypes { get; set; }
-        public DbSet<WorkshopType> Workshop{ get; set; }
+        public DbSet<Workshop> Workshops{ get; set; }
     }
 }

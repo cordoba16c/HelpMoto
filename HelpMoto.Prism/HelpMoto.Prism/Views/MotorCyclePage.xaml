@@ -87,7 +87,7 @@
         </ScrollView>
         <Button
             Command="{Binding EditMotorcycleCommand}"
-            Text="Edit Pet"/>
+            Text="{i18n:Translate EditMotorcycle}"/>
     </StackLayout>
 
 </ContentPage>

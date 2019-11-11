@@ -262,7 +262,7 @@ namespace HelpMoto.Prism.ViewModels
                 string.Format(Languages.CreateEditMotorcycleConfirm, IsEdit ? Languages.Edited : Languages.Created),
                 Languages.Accept);
 
-            //await MotorCyclesPageViewModel.GetInstance().UpdateOwnerAsync();
+            await MotorCyclesPageViewModel.GetInstance().UpdateOwnerAsync();
             await _navigationService.GoBackToRootAsync();
         }
 

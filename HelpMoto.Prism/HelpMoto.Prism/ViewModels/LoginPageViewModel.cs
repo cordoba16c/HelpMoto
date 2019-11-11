@@ -113,7 +113,12 @@ namespace HelpMoto.Prism.ViewModels
             }
 
             var token = (TokenResponse)response.Result;
-            var response2 = await _apiService.GetOwnerByEmailAsync(url, "api", "/Owners/GetOwnerByEmail", "bearer", token.Token, Email);
+            var response2 = await _apiService.GetOwnerByEmailAsync(url
+                , "api"
+                , "/Owners/GetOwnerByEmail"
+                , "bearer"
+                , token.Token
+                , Email);
             if (!response2.IsSuccess)
             {
                 IsRunning = false;

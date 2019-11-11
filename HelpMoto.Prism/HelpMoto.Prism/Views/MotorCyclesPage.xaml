@@ -27,7 +27,7 @@
                             HasShadow="True"
                             Margin="3">
                             <Frame.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding SelectCountryCommand}"/>
+                                <TapGestureRecognizer Command="{Binding SelectMotorcycleCommand}"/>
                             </Frame.GestureRecognizers>
                             <Grid>
                                 <Grid.ColumnDefinitions>

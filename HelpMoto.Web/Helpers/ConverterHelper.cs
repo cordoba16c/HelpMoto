@@ -27,6 +27,7 @@ namespace HelpMoto.Web.Helpers
             {
 
                 Shop = model.Shop,
+                Histories = model.Histories,
                 Id = isNew ? 0 : model.Id,
                 ImageUrl = path,
                 Name = model.Name,
@@ -35,6 +36,7 @@ namespace HelpMoto.Web.Helpers
                 Brand = model.Brand,
                 Remarks = model.Remarks
             };
+
             return motorcycle;
 
         }
@@ -43,6 +45,7 @@ namespace HelpMoto.Web.Helpers
             return new MotorcycleViewModel
             {
                 Shop = motorcycle.Shop,
+                Histories = motorcycle.Histories,
                 ImageUrl = motorcycle.ImageUrl,
                 Name = motorcycle.Name,
                 Owner = motorcycle.Owner,

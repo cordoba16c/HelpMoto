@@ -2,9 +2,92 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
+             xmlns:i18n="clr-namespace:HelpMoto.Prism.Helpers"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="HelpMoto.Prism.Views.MotorCyclePage"
              Title="{Binding Title}">
-  
+
+    <StackLayout
+        Padding="8">
+        <ScrollView>
+            <StackLayout>
+                <ffimageloading:CachedImage
+                    Aspect="AspectFit"
+                    Source="{Binding Motorcycle.ImageUrl}"
+                    LoadingPlaceholder= "LoaderImage"
+                    ErrorPlaceholder= "ErrorImage"
+                    CacheDuration= "50"
+                    RetryCount= "3"
+                    RetryDelay= "600"
+                    DownsampleToViewSize = "true"
+                    HeightRequest="300"
+                    WidthRequest="300"/>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Label
+                        Grid.Column="0"
+                        Grid.Row="0"
+                        FontAttributes="Bold"
+                        Text="{i18n:Translate Cilinder}"/>
+                    <Label
+                        Grid.Column="1"
+                        Grid.Row="0"
+                        Text="{Binding Motorcycle.Name}"/>
+                    <Label
+                        Grid.Column="0"
+                        Grid.Row="1"
+                        FontAttributes="Bold"
+                        Text="{i18n:Translate Brand}"/>
+                    <Label
+                        Grid.Column="1"
+                        Grid.Row="1"
+                        Text="{Binding Motorcycle.Brand}"/>
+                    <Label
+                        Grid.Column="0"
+                        Grid.Row="2"
+                        FontAttributes="Bold"
+                        Text="{i18n:Translate Shop}"/>
+                    <Label
+                        Grid.Column="1"
+                        Grid.Row="2"
+                        Text="{Binding Motorcycle.Shop, StringFormat='{0:yyyy/MM/dd}'}"/>
+                    <Label
+                        Grid.Column="0"
+                        Grid.Row="3"
+                        FontAttributes="Bold"
+                        Text="{i18n:Translate MotorcycleType}"/>
+                    <Label
+                        Grid.Column="1"
+                        Grid.Row="3"
+                        Text="{Binding Motorcycle.MotorcycleType}"/>
+                    <Label
+                        Grid.Column="0"
+                        Grid.Row="4"
+                        FontAttributes="Bold"
+                        Text="{i18n:Translate Remarks}"/>
+                    <Label
+                        Grid.Column="1"
+                        Grid.Row="4"
+                        Text="{Binding Motorcycle.Remarks}"/>
+                </Grid>
+            </StackLayout>
+        </ScrollView>
+        <Button
+            Command="{Binding EditMotorcycleCommand}"
+            Text="{i18n:Translate EditMotorcycle}"/>
+    </StackLayout>
+
 </ContentPage>

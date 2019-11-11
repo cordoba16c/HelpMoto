@@ -124,6 +124,15 @@ namespace HelpMoto.Prism.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cancel.
+        /// </summary>
+        public static string Cancel {
+            get {
+                return ResourceManager.GetString("Cancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Tap on image to change it..
         /// </summary>
         public static string ChangeImage {
@@ -214,6 +223,15 @@ namespace HelpMoto.Prism.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Detail Motorcycle.
+        /// </summary>
+        public static string DetailMotorcycle {
+            get {
+                return ResourceManager.GetString("DetailMotorcycle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Document.
         /// </summary>
         public static string Document {
@@ -246,6 +264,15 @@ namespace HelpMoto.Prism.Resources {
         public static string Edited {
             get {
                 return ResourceManager.GetString("Edited", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit Motorcycle.
+        /// </summary>
+        public static string EditMotorcycle {
+            get {
+                return ResourceManager.GetString("EditMotorcycle", resourceCulture);
             }
         }
         
@@ -322,6 +349,24 @@ namespace HelpMoto.Prism.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to From camera.
+        /// </summary>
+        public static string FromCamera {
+            get {
+                return ResourceManager.GetString("FromCamera", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to From gallery.
+        /// </summary>
+        public static string FromGallery {
+            get {
+                return ResourceManager.GetString("FromGallery", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Lastname.
         /// </summary>
         public static string Lastname {
@@ -394,6 +439,15 @@ namespace HelpMoto.Prism.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Error getting motorcycle types, please try later..
+        /// </summary>
+        public static string MotorcycleGetError {
+            get {
+                return ResourceManager.GetString("MotorcycleGetError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Motorcycle Type.
         /// </summary>
         public static string MotorcycleType {
@@ -426,6 +480,15 @@ namespace HelpMoto.Prism.Resources {
         public static string MyMotorCycles {
             get {
                 return ResourceManager.GetString("MyMotorCycles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New Motorcycle.
+        /// </summary>
+        public static string NewMotorcycle {
+            get {
+                return ResourceManager.GetString("NewMotorcycle", resourceCulture);
             }
         }
         
@@ -520,6 +583,15 @@ namespace HelpMoto.Prism.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Where do you want to get the picture?.
+        /// </summary>
+        public static string QuestionToObtainImage {
+            get {
+                return ResourceManager.GetString("QuestionToObtainImage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Register.
         /// </summary>
         public static string Register {
@@ -565,7 +637,7 @@ namespace HelpMoto.Prism.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Shop.
+        ///   Looks up a localized string similar to Purchased.
         /// </summary>
         public static string Shop {
             get {

@@ -40,7 +40,7 @@ namespace HelpMoto.Web.Controllers.API
             var MotorcycleType = await _dataContext.MotorcycleTypes.FindAsync(request.MotorcycleTypeId);
             if (MotorcycleType == null)
             {
-                return BadRequest("Not valid pet type.");
+                return BadRequest("Not valid motorcycle type.");
             }
 
             var imageUrl = string.Empty;
@@ -49,8 +49,8 @@ namespace HelpMoto.Web.Controllers.API
                 var stream = new MemoryStream(request.ImageArray);
                 var guid = Guid.NewGuid().ToString();
                 var file = $"{guid}.jpg";
-                var folder = "wwwroot\\images\\Motorcycle";
-                var fullPath = $"~/images/Motorcycle/{file}";
+                var folder = "wwwroot\\images\\Motorcycles";
+                var fullPath = $"~/images/Motorcycles/{file}";
                 var response = FilesHelper.UploadPhoto(stream, folder, file);
 
                 if (response)
@@ -97,7 +97,7 @@ namespace HelpMoto.Web.Controllers.API
             var MotorcycleType = await _dataContext.MotorcycleTypes.FindAsync(request.MotorcycleTypeId);
             if (MotorcycleType == null)
             {
-                return BadRequest("Not valid pet type.");
+                return BadRequest("Not valid motorcycle type.");
             }
 
             var imageUrl = oldMotorcycle.ImageUrl;
@@ -106,8 +106,8 @@ namespace HelpMoto.Web.Controllers.API
                 var stream = new MemoryStream(request.ImageArray);
                 var guid = Guid.NewGuid().ToString();
                 var file = $"{guid}.jpg";
-                var folder = "wwwroot\\images\\Motorcycle";
-                var fullPath = $"~/images/Motorcycle/{file}";
+                var folder = "wwwroot\\images\\Motorcycles";
+                var fullPath = $"~/images/Motorcycles/{file}";
                 var response = FilesHelper.UploadPhoto(stream, folder, file);
 
                 if (response)

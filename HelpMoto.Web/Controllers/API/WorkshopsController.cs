@@ -35,10 +35,9 @@ namespace HelpMoto.Web.Controllers.API
             var WorkshopType = await _dataContext.WorkshopTypes.FindAsync(request.WorkshopTypeId);
             if (WorkshopType == null)
             {
-                return BadRequest("Not valid motorcycle type.");
+                return BadRequest("Not valid workshop type.");
             }
-
-           
+                      
 
             var workshop = new Workshop
             {
@@ -94,5 +93,6 @@ namespace HelpMoto.Web.Controllers.API
             await _dataContext.SaveChangesAsync();
             return Ok(oldWorkshop);
         }
+
     }
 }

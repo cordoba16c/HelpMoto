@@ -8,9 +8,9 @@ namespace HelpMoto.Web.Data.Entities
 {
     public class Workshop
     {
-        public int Id { get; set; }
+        public int Id { get; set; }        
 
-        [Display(Name = "Workshop Type")]
+        [Display(Name = "Workshop ")]
         [MaxLength(50, ErrorMessage = "The {0} field can not have more than {1} characters.")]
         [Required(ErrorMessage = "The field {0} is mandatory.")]
         public string Name { get; set; }
@@ -27,7 +27,9 @@ namespace HelpMoto.Web.Data.Entities
         [MaxLength(50, ErrorMessage = "The {0} field can not have more than {1} characters.")]
         [Required(ErrorMessage = "The field {0} is mandatory.")]
         public string PhoneName { get; set; }
+
         public string Remarks { get; set; }
+
         public WorkshopType WorkshopType { get; set; }
     }
 }

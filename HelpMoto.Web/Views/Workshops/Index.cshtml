@@ -25,6 +25,9 @@
                                 @Html.DisplayNameFor(model => model.Name)
                             </th>
                             <th>
+                                @Html.DisplayNameFor(model => model.WorkshopType)
+                            </th>
+                            <th>
                                 @Html.DisplayNameFor(model => model.Address)
                             </th>
                             <th>
@@ -47,6 +50,9 @@
                                 @Html.DisplayFor(modelItem => item.Name)
                             </td>
                             <td>
+                                @Html.DisplayFor(modelItem => item.WorkshopType.Name)
+                            </td>
+                            <td>
                                 @Html.DisplayFor(modelItem => item.Address)
                             </td>
                             <td>
@@ -55,9 +61,7 @@
                             <td>
                                 @Html.DisplayFor(modelItem => item.PhoneName)
                             </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.WorkshopType.Name)
-                            </td>
+
                             <td>
                                 @Html.DisplayFor(modelItem => item.Remarks)
                             </td>

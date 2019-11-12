@@ -128,5 +128,7 @@ namespace HelpMoto.Prism.Helpers
         public static string WorkshopType => Resource.WorkshopType;
 
         public static string Description => Resource.Description;
+
+        public static string History => Resource.History;
     }
 }

@@ -11,10 +11,10 @@
         Padding="8">
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="48"/>
+                <ColumnDefinition Width="78"/>
+                <ColumnDefinition Width="78"/>
+                <ColumnDefinition Width="90"/>
+                <ColumnDefinition Width="auto"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
@@ -36,5 +36,45 @@
                 FontAttributes="Bold"
                 Text="{i18n:Translate Description}"/>
         </Grid>
+        <ListView
+            HasUnevenRows="True"
+            ItemsSource="{Binding Histories}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid>
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding SelectHistoryCommand}"/>
+                            </Grid.GestureRecognizers>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="78"/>
+                                <ColumnDefinition Width="78"/>
+                                <ColumnDefinition Width="90"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Label
+                                Grid.Column="0"
+                                Text="{Binding InicialDate, StringFormat='{0:yyyy/MM/dd}'}"
+                                VerticalOptions="Center"/>
+                            <Label
+                                Grid.Column="1"
+                                Text="{Binding FinalDate, StringFormat='{0:yyyy/MM/dd}'}"
+                                VerticalOptions="Center"/>
+                            <Label
+                                Grid.Column="2"
+                                Text="{Binding WorkshopType}"
+                                VerticalOptions="Center"/>
+                            <Label
+                                Grid.Column="3"
+                                Text="{Binding Description}"
+                                VerticalOptions="Center"/>                            
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </StackLayout>
 </ContentPage>

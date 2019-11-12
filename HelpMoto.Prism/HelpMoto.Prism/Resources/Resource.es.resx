@@ -330,4 +330,7 @@
   <data name="Description" xml:space="preserve">
     <value>Descripción</value>
   </data>
+  <data name="History" xml:space="preserve">
+    <value>Historial</value>
+  </data>
 </root>

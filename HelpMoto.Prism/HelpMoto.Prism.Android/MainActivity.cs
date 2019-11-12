@@ -22,6 +22,8 @@ namespace HelpMoto.Prism.Droid
             CrossCurrentActivity.Current.Init(this, bundle);
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
+            Xamarin.FormsMaps.Init(this, bundle);
+
             FFImageLoading.Forms.Platform.CachedImageRenderer.Init(true);
             new SfBusyIndicatorRenderer();
             LoadApplication(new App(new AndroidInitializer()));

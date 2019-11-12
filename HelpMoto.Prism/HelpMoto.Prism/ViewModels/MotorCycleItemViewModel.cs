@@ -24,7 +24,7 @@ namespace HelpMoto.Prism.ViewModels
         private async void SelectMotorCycle()
         {
             Settings.MotorCycle = JsonConvert.SerializeObject(this);
-            await _navigationService.NavigateAsync("MotorCyclePage");
+            await _navigationService.NavigateAsync("MotorcycleTabbedPage");
         }
     }
 }

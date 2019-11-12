@@ -146,7 +146,7 @@ namespace HelpMoto.Web.Controllers
                 _dataContext.Owners.Add(owner);
                 await _dataContext.SaveChangesAsync();
 
-                var myToken = await _userHelper.GenerateEmailConfirmationTokenAsync(user);
+                /*var myToken = await _userHelper.GenerateEmailConfirmationTokenAsync(user);
                 var tokenLink = Url.Action("ConfirmEmail", "Account", new
                 {
                     userid = user.Id,
@@ -158,9 +158,9 @@ namespace HelpMoto.Web.Controllers
                     $"plase click in this link:</br></br><a href = \"{tokenLink}\">Confirm Email</a>");
                 ViewBag.Message = "The instructions to allow your user has been sent to email.";
                 return View(model);
-            }
+            }*/
 
-            /*
+            
             var loginViewModel = new LoginViewModel
             {
                 Password = model.Password,
@@ -174,7 +174,7 @@ namespace HelpMoto.Web.Controllers
             {
                 return RedirectToAction("Index", "Home");
             }
-        }*/
+        }
 
             return View(model);
         }

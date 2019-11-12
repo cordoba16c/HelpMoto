@@ -223,6 +223,15 @@ namespace HelpMoto.Prism.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Description.
+        /// </summary>
+        public static string Description {
+            get {
+                return ResourceManager.GetString("Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Detail Motorcycle.
         /// </summary>
         public static string DetailMotorcycle {
@@ -313,6 +322,15 @@ namespace HelpMoto.Prism.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Final date.
+        /// </summary>
+        public static string FinalDate {
+            get {
+                return ResourceManager.GetString("FinalDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Firstname.
         /// </summary>
         public static string Firstname {
@@ -363,6 +381,15 @@ namespace HelpMoto.Prism.Resources {
         public static string FromGallery {
             get {
                 return ResourceManager.GetString("FromGallery", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Initial date.
+        /// </summary>
+        public static string InitialDate {
+            get {
+                return ResourceManager.GetString("InitialDate", resourceCulture);
             }
         }
         
@@ -651,6 +678,15 @@ namespace HelpMoto.Prism.Resources {
         public static string UserUpdated {
             get {
                 return ResourceManager.GetString("UserUpdated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Workshop type.
+        /// </summary>
+        public static string WorkshopType {
+            get {
+                return ResourceManager.GetString("WorkshopType", resourceCulture);
             }
         }
         

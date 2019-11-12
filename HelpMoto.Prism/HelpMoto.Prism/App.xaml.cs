@@ -5,6 +5,10 @@ using HelpMoto.Prism.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using HelpMoto.Common.Services;
+using Newtonsoft.Json;
+using HelpMoto.Common.Models;
+using HelpMoto.Common.Helpers;
+using System;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace HelpMoto.Prism
@@ -25,7 +29,15 @@ namespace HelpMoto.Prism
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MTY2MTcxQDMxMzcyZTMzMmUzMGFtVitGKytWYnF6VkcxM1I0ejhEcm43Z2RlY0FDMFZaYjFIUTNabXljRUU9");
             InitializeComponent();
 
-            await NavigationService.NavigateAsync("NavigationPage/LoginPage");
+            var token = JsonConvert.DeserializeObject<TokenResponse>(Settings.Token);
+            if (Settings.IsRemembered && token?.Expiration > DateTime.Now)
+            {
+                await NavigationService.NavigateAsync("/HelpMotoMasterDetailPage/NavigationPage/MotorCyclesPage");
+            }
+            else 
+            {
+                await NavigationService.NavigateAsync("NavigationPage/LoginPage");
+            }
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
@@ -38,6 +50,7 @@ namespace HelpMoto.Prism
             containerRegistry.RegisterForNavigation<ProfilePage, ProfilePageViewModel>();
             containerRegistry.RegisterForNavigation<MotorCyclePage, MotorCyclePageViewModel>();
             containerRegistry.RegisterForNavigation<EditMotorCyclePage, EditMotorCyclePageViewModel>();
+            containerRegistry.RegisterForNavigation<HistoriesPage, HistoriesPageViewModel>();
         }
     }
 }

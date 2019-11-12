@@ -262,7 +262,7 @@ namespace HelpMoto.Prism.ViewModels
                 string.Format(Languages.CreateEditMotorcycleConfirm, IsEdit ? Languages.Edited : Languages.Created),
                 Languages.Accept);
 
-            //await MotorCyclesPageViewModel.GetInstance().UpdateOwnerAsync();
+            await MotorCyclesPageViewModel.GetInstance().UpdateOwnerAsync();
             await _navigationService.GoBackToRootAsync();
         }
 
@@ -311,7 +311,7 @@ namespace HelpMoto.Prism.ViewModels
             var url = App.Current.Resources["UrlAPI"].ToString();
             var token = JsonConvert.DeserializeObject<TokenResponse>(Settings.Token);
             var response = await _apiService.DeleteAsync(
-                url, "/api", "/Pets", MotorCycle.Id, "bearer", token.Token);
+                url, "/api", "/Motorcycle", MotorCycle.Id, "bearer", token.Token);
 
             if (!response.IsSuccess)
             {

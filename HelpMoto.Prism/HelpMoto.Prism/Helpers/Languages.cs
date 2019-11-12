@@ -120,5 +120,13 @@ namespace HelpMoto.Prism.Helpers
         public static string NewMotorcycle => Resource.NewMotorcycle;
 
         public static string DetailMotorcycle => Resource.DetailMotorcycle;
+
+        public static string InitialDate => Resource.InitialDate;
+
+        public static string FinalDate => Resource.FinalDate;
+
+        public static string WorkshopType => Resource.WorkshopType;
+
+        public static string Description => Resource.Description;
     }
 }

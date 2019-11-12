@@ -50,18 +50,18 @@ namespace HelpMoto.Prism.ViewModels
             var token = JsonConvert.DeserializeObject<TokenResponse>(Settings.Token);
 
             var response = await _apiService.GetOwnerByEmailAsync(
-                url,
-                "/api",
-                "/Owners/GetOwnerByEmail",
-                "bearer",
-                token.Token,
-                _owner.Email);
+                url
+                , "api"
+                , "/Owners/GetOwnerByEmail"
+                , "bearer"
+                , token.Token
+                , _owner.Email);
 
             if (response.IsSuccess)
             {
-                var owner = (OwnerResponse)response.Result;
+                var owner = response.Result;
                 Settings.Owner = JsonConvert.SerializeObject(owner);
-                _owner = owner;
+                _owner = JsonConvert.DeserializeObject<OwnerResponse>(Settings.Owner); ;
                 LoadOwner();
             }
         }

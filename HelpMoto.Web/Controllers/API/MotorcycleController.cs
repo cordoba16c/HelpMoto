@@ -8,6 +8,7 @@ using HelpMoto.Common.Helpers;
 using HelpMoto.Common.Models;
 using HelpMoto.Web.Data;
 using HelpMoto.Web.Data.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace HelpMoto.Web.Controllers.API
 {
@@ -122,10 +123,37 @@ namespace HelpMoto.Web.Controllers.API
             oldMotorcycle.MotorcycleType = MotorcycleType;
             oldMotorcycle.Brand = request.Brand;
             oldMotorcycle.Remarks = request.Remarks;
+            oldMotorcycle.Shop = request.Shop;
 
             _dataContext.Motorcycles.Update(oldMotorcycle);
             await _dataContext.SaveChangesAsync();
             return Ok(oldMotorcycle);
         }
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteMotorcycle([FromRoute] int id)
+        {
+            if (!ModelState.IsValid)
+            {
+                return this.BadRequest(ModelState);
+            }
+
+            var motorcycle = await _dataContext.Motorcycles
+                .Include(p => p.Histories)
+                .FirstOrDefaultAsync(p => p.Id == id);
+            if (motorcycle == null)
+            {
+                return NotFound();
+            }
+
+            if (motorcycle.Histories.Count > 0)
+            {
+                return BadRequest("The Motorcycle can't be deleted because it has history.");
+            }
+
+            _dataContext.Motorcycles.Remove(motorcycle);
+            await _dataContext.SaveChangesAsync();
+            return Ok("Motorcycle deleted");
+        }
+
     }
 }

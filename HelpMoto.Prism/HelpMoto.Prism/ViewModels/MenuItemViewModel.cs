@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using HelpMoto.Common.Helpers;
 using HelpMoto.Common.Models;
 using Prism.Commands;
 using Prism.Navigation;
@@ -23,7 +24,7 @@ namespace HelpMoto.Prism.ViewModels
         {
             if (PageName.Equals("LoginPage"))
             {
-                //Settings.IsRemembered = false;
+                Settings.IsRemembered = false;
                 await _navigationService.NavigateAsync("/NavigationPage/LoginPage");
                 return;
             }

@@ -160,13 +160,14 @@ namespace HelpMoto.Web.Controllers
                 return View(model);
             }
 
-            /*var loginViewModel = new LoginViewModel
+            /*
+            var loginViewModel = new LoginViewModel
             {
                 Password = model.Password,
                 RememberMe = false,
                 Username = model.Username
             };
-
+            
             var result2 = await _userHelper.LoginAsync(loginViewModel);
 
             if (result2.Succeeded)

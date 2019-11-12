@@ -311,7 +311,7 @@ namespace HelpMoto.Prism.ViewModels
             var url = App.Current.Resources["UrlAPI"].ToString();
             var token = JsonConvert.DeserializeObject<TokenResponse>(Settings.Token);
             var response = await _apiService.DeleteAsync(
-                url, "/api", "/Pets", MotorCycle.Id, "bearer", token.Token);
+                url, "/api", "/Motorcycle", MotorCycle.Id, "bearer", token.Token);
 
             if (!response.IsSuccess)
             {

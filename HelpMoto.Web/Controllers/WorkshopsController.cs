@@ -34,6 +34,7 @@ namespace HelpMoto.Web.Controllers
             }
 
             var workshop = await _context.Workshops
+                .Include(h => h.WorkshopType)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (workshop == null)
             {
@@ -54,7 +55,7 @@ namespace HelpMoto.Web.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Address,ContactName,PhoneName,Remarks")] Workshop workshop)
+        public async Task<IActionResult> Create([Bind("Id,Name,Address,ContactName,PhoneName,WorkshopTypes,Remarks")] Workshop workshop)
         {
             if (ModelState.IsValid)
             {
@@ -62,6 +63,7 @@ namespace HelpMoto.Web.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+
             return View(workshop);
         }
 

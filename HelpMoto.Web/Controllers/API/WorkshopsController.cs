@@ -8,6 +8,8 @@ using HelpMoto.Common.Helpers;
 using HelpMoto.Common.Models;
 using HelpMoto.Web.Data;
 using HelpMoto.Web.Data.Entities;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace HelpMoto.Web.Controllers.API
 {
@@ -24,6 +26,11 @@ namespace HelpMoto.Web.Controllers.API
         }
 
 
+        [HttpGet]
+        public IEnumerable<Workshop> GetWorkshops()
+        {
+            return _dataContext.Workshops.OrderBy(pt => pt.Name);
+        }
         [HttpPost]
         public async Task<IActionResult> PostWorkshop([FromBody] WorkshopRequest request)
         {

@@ -13,7 +13,7 @@ namespace HelpMoto.Web.Data.Entities
         public string Name { get; set; }
 
         public ICollection<History> Histories { get; set; }
-        public ICollection<Workshop> Workshop { get; set; }
+        public ICollection<Workshop> Workshops { get; set; }
     }
 }
 

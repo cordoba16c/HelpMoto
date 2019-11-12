@@ -34,7 +34,6 @@ namespace HelpMoto.Web.Controllers
             }
 
             var workshop = await _context.Workshops
-                .Include(h => h.WorkshopType)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (workshop == null)
             {
@@ -43,6 +42,7 @@ namespace HelpMoto.Web.Controllers
 
             return View(workshop);
         }
+
         // GET: Workshops/Create
         public IActionResult Create()
         {

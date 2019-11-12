@@ -34,6 +34,9 @@
                                 @Html.DisplayNameFor(model => model.PhoneName)
                             </th>
                             <th>
+                                @Html.DisplayNameFor(model => model.FirstOrDefault().WorkshopType.Name)
+                            </th>
+                            <th>
                                 @Html.DisplayNameFor(model => model.Remarks)
                             </th>
                             <th></th>

@@ -10,7 +10,8 @@
 
     <StackLayout>
         <StackLayout
-            Padding="8">
+            Padding="8"
+            BackgroundColor="LightGray">
             <SearchBar
                 BackgroundColor="#F2F2F2"
                 HeightRequest="46"
@@ -20,7 +21,10 @@
             </SearchBar>
         </StackLayout>
         <maps:Map
-        	x:Name="MyMap"            
+        	x:Name="MyMap"
+            HeightRequest="350"
+            VerticalOptions="CenterAndExpand"
+            IsShowingUser="True"
         	MapType="Street"/>
         <Label
             BackgroundColor="#2196F3"            
@@ -30,6 +34,47 @@
             HorizontalTextAlignment="Center"
             TextColor="#F2F2F2"            
             VerticalOptions="Center"/>
+        <ListView
+            BackgroundColor="Transparent"
+            SeparatorVisibility="None"
+            HasUnevenRows="True"
+            IsRefreshing="{Binding IsRunning, Mode=TwoWay}"
+            ItemsSource="{Binding Workshop}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Frame
+                            HasShadow="True"
+                            Margin="3">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding SelectWorkshopCommand}"/>
+                            </Frame.GestureRecognizers>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>                                
+                                <StackLayout
+                                        Grid.Column="1"
+                                        VerticalOptions="Center">
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontSize="Medium"
+                                        Text="{Binding Name}"
+                                        TextColor="Black">
+                                    </Label>
+                                    <Label 
+                                        Text="{Binding Address}"
+                                        TextColor="Black">
+                                    </Label>
+                                </StackLayout>                                
+                            </Grid>
+                        </Frame>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </StackLayout>
 
 </ContentPage>

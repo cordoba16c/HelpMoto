@@ -146,25 +146,37 @@ namespace HelpMoto.Web.Controllers
                 _dataContext.Owners.Add(owner);
                 await _dataContext.SaveChangesAsync();
 
-                var loginViewModel = new LoginViewModel
+                var myToken = await _userHelper.GenerateEmailConfirmationTokenAsync(user);
+                var tokenLink = Url.Action("ConfirmEmail", "Account", new
                 {
-                    Password = model.Password,
-                    RememberMe = false,
-                    Username = model.Username
-                };
+                    userid = user.Id,
+                    token = myToken
+                }, protocol: HttpContext.Request.Scheme);
 
-                var result2 = await _userHelper.LoginAsync(loginViewModel);
-
-                if (result2.Succeeded)
-                {
-                    return RedirectToAction("Index", "Home");
-                }
+                _mailHelper.SendMail(model.Username, "Email confirmation", $"<h1>Email Confirmation</h1>" +
+                    $"To allow the user, " +
+                    $"plase click in this link:</br></br><a href = \"{tokenLink}\">Confirm Email</a>");
+                ViewBag.Message = "The instructions to allow your user has been sent to email.";
+                return View(model);
             }
+
+            /*var loginViewModel = new LoginViewModel
+            {
+                Password = model.Password,
+                RememberMe = false,
+                Username = model.Username
+            };
+
+            var result2 = await _userHelper.LoginAsync(loginViewModel);
+
+            if (result2.Succeeded)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+        }*/
 
             return View(model);
         }
-
-
         private async Task<User> AddUserAsync(AddUserViewModel model)
         {
             var user = new User
@@ -329,5 +341,27 @@ namespace HelpMoto.Web.Controllers
             ViewBag.Message = "User not found.";
             return View(model);
         }
+        public async Task<IActionResult> ConfirmEmail(string userId, string token)
+        {
+            if (string.IsNullOrEmpty(userId) || string.IsNullOrEmpty(token))
+            {
+                return NotFound();
+            }
+
+            var user = await _userHelper.GetUserByIdAsync(userId);
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            var result = await _userHelper.ConfirmEmailAsync(user, token);
+            if (!result.Succeeded)
+            {
+                return NotFound();
+            }
+
+            return View();
+        }
+
     }
 }

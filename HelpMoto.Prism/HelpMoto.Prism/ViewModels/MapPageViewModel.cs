@@ -21,7 +21,7 @@ namespace HelpMoto.Prism.ViewModels
             _navigationService = navigationService;
             _apiService = apiService;
             Title = Languages.LocateWorkshop;
-            LoadOwner();
+            LoadWorkshop();
         }
 
         public ObservableCollection<WorkshopResponse> Workshop
@@ -30,7 +30,7 @@ namespace HelpMoto.Prism.ViewModels
             set => SetProperty(ref _workshop, value);
         }
 
-        private async void LoadOwner()
+        private async void LoadWorkshop()
         {
             var url = App.Current.Resources["UrlAPI"].ToString();
             var token = JsonConvert.DeserializeObject<TokenResponse>(Settings.Token);
@@ -58,7 +58,7 @@ namespace HelpMoto.Prism.ViewModels
             {
                 await App.Current.MainPage.DisplayAlert(
                     Languages.Error,
-                    Languages.MotorcycleGetError,
+                    response.Message,
                     Languages.Accept);
                 await _navigationService.GoBackAsync();
                 return;

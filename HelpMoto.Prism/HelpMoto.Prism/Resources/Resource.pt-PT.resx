@@ -318,4 +318,16 @@
   <data name="DetailMotorcycle" xml:space="preserve">
     <value>Detalhe da motocicleta</value>
   </data>
+  <data name="InitialDate" xml:space="preserve">
+    <value>Data Inicial</value>
+  </data>
+  <data name="FinalDate" xml:space="preserve">
+    <value>Data Final</value>
+  </data>
+  <data name="WorkshopType" xml:space="preserve">
+    <value>Tipo de Oficina</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Descrição:</value>
+  </data>
 </root>

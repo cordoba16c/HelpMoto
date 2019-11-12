@@ -50,6 +50,7 @@ namespace HelpMoto.Prism
             containerRegistry.RegisterForNavigation<ProfilePage, ProfilePageViewModel>();
             containerRegistry.RegisterForNavigation<MotorCyclePage, MotorCyclePageViewModel>();
             containerRegistry.RegisterForNavigation<EditMotorCyclePage, EditMotorCyclePageViewModel>();
+            containerRegistry.RegisterForNavigation<HistoriesPage, HistoriesPageViewModel>();
         }
     }
 }

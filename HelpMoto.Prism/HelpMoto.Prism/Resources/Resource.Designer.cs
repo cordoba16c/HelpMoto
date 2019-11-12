@@ -439,6 +439,15 @@ namespace HelpMoto.Prism.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Locate a workshop.
+        /// </summary>
+        public static string LocateWorkshop {
+            get {
+                return ResourceManager.GetString("LocateWorkshop", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Login.
         /// </summary>
         public static string Login {
@@ -516,6 +525,15 @@ namespace HelpMoto.Prism.Resources {
         public static string MyMotorCycles {
             get {
                 return ResourceManager.GetString("MyMotorCycles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Near Your Location.
+        /// </summary>
+        public static string NearLocation {
+            get {
+                return ResourceManager.GetString("NearLocation", resourceCulture);
             }
         }
         

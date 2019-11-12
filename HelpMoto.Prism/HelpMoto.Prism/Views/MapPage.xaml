@@ -3,14 +3,33 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
          	 xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
+             xmlns:i18n="clr-namespace:HelpMoto.Prism.Helpers"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="HelpMoto.Prism.Views.MapPage"
              Title="{Binding Title}">
 
     <StackLayout>
+        <StackLayout
+            Padding="8">
+            <SearchBar
+                BackgroundColor="#F2F2F2"
+                HeightRequest="46"
+                Text="{Binding Filter, Mode=TwoWay}"
+                Placeholder="Search..."
+                SearchCommand="{Binding SearchCommand}">
+            </SearchBar>
+        </StackLayout>
         <maps:Map
         	x:Name="MyMap"            
         	MapType="Street"/>
+        <Label
+            BackgroundColor="#2196F3"            
+            FontSize="Large"
+            HeightRequest="46"
+            Text="{i18n:Translate NearLocation}"
+            HorizontalTextAlignment="Center"
+            TextColor="#F2F2F2"            
+            VerticalOptions="Center"/>
     </StackLayout>
 
 </ContentPage>

@@ -1,16 +1,13 @@
-﻿using Prism.Commands;
-using Prism.Mvvm;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using HelpMoto.Prism.Helpers;
+using Prism.Navigation;
 
 namespace HelpMoto.Prism.ViewModels
 {
-    public class MapPageViewModel : BindableBase
+    public class MapPageViewModel : ViewModelBase
     {
-        public MapPageViewModel()
+        public MapPageViewModel(INavigationService navigationService) : base(navigationService)
         {
-
+            Title = Languages.LocateWorkshop;
         }
     }
 }

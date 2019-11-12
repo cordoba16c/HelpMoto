@@ -333,4 +333,10 @@
   <data name="History" xml:space="preserve">
     <value>Historique</value>
   </data>
+  <data name="LocateWorkshop" xml:space="preserve">
+    <value>Localisez un atelier</value>
+  </data>
+  <data name="NearLocation" xml:space="preserve">
+    <value>Votre emplacement</value>
+  </data>
 </root>

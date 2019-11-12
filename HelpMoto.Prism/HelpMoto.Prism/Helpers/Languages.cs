@@ -130,5 +130,9 @@ namespace HelpMoto.Prism.Helpers
         public static string Description => Resource.Description;
 
         public static string History => Resource.History;
+
+        public static string LocateWorkshop => Resource.LocateWorkshop;
+
+        public static string NearLocation => Resource.NearLocation;
     }
 }

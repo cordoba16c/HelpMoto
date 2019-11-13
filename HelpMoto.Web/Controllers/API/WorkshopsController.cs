@@ -10,6 +10,7 @@ using HelpMoto.Web.Data;
 using HelpMoto.Web.Data.Entities;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace HelpMoto.Web.Controllers.API
 {
@@ -26,11 +27,28 @@ namespace HelpMoto.Web.Controllers.API
         }
 
 
-        [HttpGet]
-        public IEnumerable<Workshop> GetWorkshops()
+      /*  [HttpGet]
+        public async Task<IActionResult> GetWorkshop()
         {
-            return _dataContext.Workshops.OrderBy(pt => pt.Name);
-        }
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+            var workshop = await _dataContext.Workshops.ToListAsync();
+
+            var response = new WorkshopResponse
+            {
+                Id = workshop.Id
+,                Name = workshop.Name,
+                Address = workshop.Address,
+                ContactName = workshop.ContactName,
+                PhoneName= workshop.PhoneName,
+                WorkshopType = h.WorkshopType.Name,
+                Remarks = workshop.Remarks
+            };
+            return Ok(response);
+
+        }*/
         [HttpPost]
         public async Task<IActionResult> PostWorkshop([FromBody] WorkshopRequest request)
         {

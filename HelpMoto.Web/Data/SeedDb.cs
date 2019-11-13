@@ -29,7 +29,7 @@ namespace HelpMoto.Web.Data
             await CheckOwnerAsync(customer);
             await CheckManagerAsync(manager);
             await CheckWorkshopTypesAsync();
-            await CheckWorkshopAsync();
+           // await CheckWorkshopAsync();
 
         }
 
@@ -84,7 +84,7 @@ namespace HelpMoto.Web.Data
             }
         }
 
-        private async Task CheckWorkshopAsync()
+        /*private async Task CheckWorkshopAsync()
         {
             if (!_dataContext.Workshops.Any())
             {
@@ -93,7 +93,7 @@ namespace HelpMoto.Web.Data
                 AddWorkshop("Centro servicios YAMAHA", "CL 37 #45-15", "Fabian Rios","302 378 56 45", workshopType, "Horario atención lunes a sabado 7:00 am a 5:00 pm");
                 await _dataContext.SaveChangesAsync();
             }
-        }
+        }*/
         private async Task CheckWorkshopTypesAsync()
         {
             if (!_dataContext.WorkshopTypes.Any())

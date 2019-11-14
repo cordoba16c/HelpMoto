@@ -38,7 +38,7 @@ namespace HelpMoto.Web.Controllers.API
                 .ThenInclude(p => p.Histories)
                 .ThenInclude(h => h.WorkshopType)
                 .FirstOrDefaultAsync(o => o.User.UserName.ToLower() == emailRequest.Email.ToLower());
-
+            ;
             var response = new OwnerResponse
             {
                 Id = owner.Id,

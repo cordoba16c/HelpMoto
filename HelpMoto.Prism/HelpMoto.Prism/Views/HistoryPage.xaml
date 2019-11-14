@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:i18n="clr-namespace:HelpMoto.Prism.Helpers"
+             xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="HelpMoto.Prism.Views.HistoryPage"
+             Title="{Binding Title}">
+
+    <StackLayout
+        Padding="8">
+        <ScrollView>
+            <AbsoluteLayout>
+                <StackLayout
+                    AbsoluteLayout.LayoutBounds="0,0,1,1"
+                    AbsoluteLayout.LayoutFlags="All">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Label
+                	        Grid.Column="0"
+                	        Grid.Row="0"
+                	        Text="{i18n:Translate InicialDate}"
+                	        VerticalOptions="Center"/>
+                        <DatePicker
+                	        Grid.Column="1"
+                	        Grid.Row="0"
+                	        Date="{Binding History.InicialDate}"/>
+                        <Label
+                	        Grid.Column="0"
+                	        Grid.Row="1"
+                	        Text="{i18n:Translate FinalDate}"
+                	        VerticalOptions="Center"/>
+                        <DatePicker
+                	        Grid.Column="1"
+                	        Grid.Row="1"
+                	        Date="{Binding History.FinalDate}"/>
+                        <Label
+                	        Grid.Column="0"
+                	        Grid.Row="2"
+                	        Text="{i18n:Translate MotorcycleType}"
+                	        VerticalOptions="Center"/>
+                        <Picker
+                	        Grid.Column="1"
+                	        Grid.Row="2"
+                	        ItemDisplayBinding="{Binding Name}"
+                	        ItemsSource="{Binding WorkshopTypes}"
+                	        SelectedItem="{Binding WorkshopTypes}"
+                	        Title="{i18n:Translate MotorcycleTypePlaceHolder}"/>
+
+                        <Label
+                	        Grid.Column="0"
+                	        Grid.Row="3"
+                	        Text="{i18n:Translate Description}"
+                	        VerticalOptions="Center"/>
+                        <Entry
+                	        Grid.Column="1"
+                	        Grid.Row="3"
+                	        Placeholder="{i18n:Translate BrandPlaceHolder}"
+                	        Text="{Binding History.Description}"/>                        
+                    </Grid>
+                </StackLayout>
+                <busyindicator:SfBusyIndicator  
+                    AnimationType="Ball"
+                    AbsoluteLayout.LayoutBounds=".5,.5,.5,.5"
+                    AbsoluteLayout.LayoutFlags="All"
+                    BackgroundColor="{StaticResource colorSecondary}"
+                    HorizontalOptions="Center"
+                    TextColor="{StaticResource colorFont}"
+                    IsVisible="{Binding IsRunning}"
+                    Title="{i18n:Translate Saving}"
+                    VerticalOptions="Center"
+                    ViewBoxWidth="80"
+                    ViewBoxHeight="80" />
+            </AbsoluteLayout>
+        </ScrollView>
+    </StackLayout>
+  
+</ContentPage>

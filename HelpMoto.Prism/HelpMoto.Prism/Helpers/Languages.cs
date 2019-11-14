@@ -134,5 +134,19 @@ namespace HelpMoto.Prism.Helpers
         public static string LocateWorkshop => Resource.LocateWorkshop;
 
         public static string NearLocation => Resource.NearLocation;
+
+        public static string EditHistory => Resource.EditHistory;
+
+        public static string NewHistory => Resource.NewHistory;
+
+        public static string WorkshopGetError => Resource.WorkshopGetError;
+
+        public static string HistoryDescriptionError => Resource.HistoryDescriptionError;
+
+        public static string FinalDateError => Resource.FinalDateError;
+
+        public static string WorkshopTypeError => Resource.WorkshopTypeError;
+
+        public static string CreateEditHistoryConfirm => Resource.CreateEditHistoryConfirm;
     }
 }

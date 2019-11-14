@@ -18,5 +18,7 @@ namespace HelpMoto.Common.Models
         public string Remarks { get; set; }
 
         public string WorkshopType { get; set; }
+
+        public int MotorcycleId { get; set; }
     }
 }

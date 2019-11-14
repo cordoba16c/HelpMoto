@@ -339,4 +339,25 @@
   <data name="NearLocation" xml:space="preserve">
     <value>Sua Localização</value>
   </data>
+  <data name="EditHistory" xml:space="preserve">
+    <value>Editar Histórico</value>
+  </data>
+  <data name="NewHistory" xml:space="preserve">
+    <value>Novo Item do Histórico</value>
+  </data>
+  <data name="WorkshopGetError" xml:space="preserve">
+    <value>Erro recebendo tipos de oficina, por favor, tente mais tarde.</value>
+  </data>
+  <data name="HistoryDescriptionError" xml:space="preserve">
+    <value>Você deve inserir a descrição da história.</value>
+  </data>
+  <data name="FinalDateError" xml:space="preserve">
+    <value>A data final deve ser igual ou maior do que a data inicial.</value>
+  </data>
+  <data name="WorkshopTypeError" xml:space="preserve">
+    <value>Você deve selecionar um tipo de oficina.</value>
+  </data>
+  <data name="CreateEditHistoryConfirm" xml:space="preserve">
+    <value>A história foi {0} com sucesso!</value>
+  </data>
 </root>

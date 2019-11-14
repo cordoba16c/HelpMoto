@@ -339,4 +339,25 @@
   <data name="NearLocation" xml:space="preserve">
     <value>Near Your Location</value>
   </data>
+  <data name="EditHistory" xml:space="preserve">
+    <value>Edit History</value>
+  </data>
+  <data name="NewHistory" xml:space="preserve">
+    <value>New History</value>
+  </data>
+  <data name="WorkshopGetError" xml:space="preserve">
+    <value>Error getting workshop types, please try later.</value>
+  </data>
+  <data name="HistoryDescriptionError" xml:space="preserve">
+    <value>You must enter the history description.</value>
+  </data>
+  <data name="FinalDateError" xml:space="preserve">
+    <value>The final date must be equal to or greater than the initial date.</value>
+  </data>
+  <data name="WorkshopTypeError" xml:space="preserve">
+    <value>You must select a workshop type.</value>
+  </data>
+  <data name="CreateEditHistoryConfirm" xml:space="preserve">
+    <value>The history was {0} sucessfully</value>
+  </data>
 </root>

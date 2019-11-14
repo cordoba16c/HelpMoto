@@ -205,6 +205,15 @@ namespace HelpMoto.Prism.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The history was {0} sucessfully.
+        /// </summary>
+        public static string CreateEditHistoryConfirm {
+            get {
+                return ResourceManager.GetString("CreateEditHistoryConfirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The Motorcycle was {0} sucessfully.
         /// </summary>
         public static string CreateEditMotorcycleConfirm {
@@ -277,6 +286,15 @@ namespace HelpMoto.Prism.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Edit History.
+        /// </summary>
+        public static string EditHistory {
+            get {
+                return ResourceManager.GetString("EditHistory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Edit Motorcycle.
         /// </summary>
         public static string EditMotorcycle {
@@ -327,6 +345,15 @@ namespace HelpMoto.Prism.Resources {
         public static string FinalDate {
             get {
                 return ResourceManager.GetString("FinalDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The final date must be equal to or greater than the initial date..
+        /// </summary>
+        public static string FinalDateError {
+            get {
+                return ResourceManager.GetString("FinalDateError", resourceCulture);
             }
         }
         
@@ -390,6 +417,15 @@ namespace HelpMoto.Prism.Resources {
         public static string History {
             get {
                 return ResourceManager.GetString("History", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You must enter the history description..
+        /// </summary>
+        public static string HistoryDescriptionError {
+            get {
+                return ResourceManager.GetString("HistoryDescriptionError", resourceCulture);
             }
         }
         
@@ -534,6 +570,15 @@ namespace HelpMoto.Prism.Resources {
         public static string NearLocation {
             get {
                 return ResourceManager.GetString("NearLocation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New History.
+        /// </summary>
+        public static string NewHistory {
+            get {
+                return ResourceManager.GetString("NewHistory", resourceCulture);
             }
         }
         
@@ -709,11 +754,29 @@ namespace HelpMoto.Prism.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Error getting workshop types, please try later..
+        /// </summary>
+        public static string WorkshopGetError {
+            get {
+                return ResourceManager.GetString("WorkshopGetError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Workshop type.
         /// </summary>
         public static string WorkshopType {
             get {
                 return ResourceManager.GetString("WorkshopType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You must select a workshop type..
+        /// </summary>
+        public static string WorkshopTypeError {
+            get {
+                return ResourceManager.GetString("WorkshopTypeError", resourceCulture);
             }
         }
         

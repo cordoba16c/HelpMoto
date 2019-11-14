@@ -339,4 +339,25 @@
   <data name="NearLocation" xml:space="preserve">
     <value>Votre emplacement</value>
   </data>
+  <data name="EditHistory" xml:space="preserve">
+    <value>Modifier l'historique</value>
+  </data>
+  <data name="NewHistory" xml:space="preserve">
+    <value>Nouvel historique</value>
+  </data>
+  <data name="WorkshopGetError" xml:space="preserve">
+    <value>Erreur obtenir types d'atelier, s'il vous plaît essayer plus tard.</value>
+  </data>
+  <data name="HistoryDescriptionError" xml:space="preserve">
+    <value>Vous devez entrer la description d'historique.</value>
+  </data>
+  <data name="FinalDateError" xml:space="preserve">
+    <value>La date finale doit être égale ou supérieure à la date initiale.</value>
+  </data>
+  <data name="WorkshopTypeError" xml:space="preserve">
+    <value>Vous devez choisir un type d'atelier.</value>
+  </data>
+  <data name="CreateEditHistoryConfirm" xml:space="preserve">
+    <value>L'histoire a été {0} avec succès!</value>
+  </data>
 </root>

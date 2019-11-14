@@ -58,7 +58,7 @@ namespace HelpMoto.Prism.ViewModels
             {
                 await App.Current.MainPage.DisplayAlert(
                     Languages.Error,
-                    response.Message,
+                    "Error Cargando los talleres",
                     Languages.Accept);
                 await _navigationService.GoBackAsync();
                 return;

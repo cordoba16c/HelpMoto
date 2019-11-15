@@ -161,17 +161,17 @@ namespace HelpMoto.Prism.ViewModels
 
             var url = App.Current.Resources["UrlAPI"].ToString();
             var token = JsonConvert.DeserializeObject<TokenResponse>(Settings.Token);
-            //var owner = JsonConvert.DeserializeObject<OwnerResponse>(Settings.Owner);
+            var Motorcycle = JsonConvert.DeserializeObject<OwnerResponse>(Settings.MotorCycle);
 
             var historyRequest = new HistoryRequest
             {                
                 Id = History.Id,                
                 Description = History.Description,
-                MotorcycleId = MotorCycle.Id,                
+                MotorcycleId = Motorcycle.Id,                
                 InicialDate = History.InicialDate,
                 FinalDate = History.FinalDate,
-                Remarks = MotorCycle.Remarks,
-                WorkshopType = History.WorkshopType                
+                Remarks = "Pruebas",
+                WorkshopType = WorkshopType.Name      
             };
 
             Response response;
@@ -201,7 +201,7 @@ namespace HelpMoto.Prism.ViewModels
                 string.Format(Languages.CreateEditHistoryConfirm, IsEdit ? Languages.Edited : Languages.Created),
                 Languages.Accept);
 
-            //await MotorCyclesPageViewModel.GetInstance().UpdateOwnerAsync();
+            await MotorCyclesPageViewModel.GetInstance().UpdateOwnerAsync();
             await _navigationService.GoBackToRootAsync();
         }
 

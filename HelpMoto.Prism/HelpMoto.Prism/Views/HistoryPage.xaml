@@ -30,7 +30,7 @@
                         <Label
                 	        Grid.Column="0"
                 	        Grid.Row="0"
-                	        Text="{i18n:Translate InicialDate}"
+                	        Text="{i18n:Translate InitialDate}"
                 	        VerticalOptions="Center"/>
                         <DatePicker
                 	        Grid.Column="1"
@@ -48,26 +48,26 @@
                         <Label
                 	        Grid.Column="0"
                 	        Grid.Row="2"
-                	        Text="{i18n:Translate MotorcycleType}"
+                	        Text="{i18n:Translate WorkshopType}"
                 	        VerticalOptions="Center"/>
                         <Picker
                 	        Grid.Column="1"
                 	        Grid.Row="2"
                 	        ItemDisplayBinding="{Binding Name}"
                 	        ItemsSource="{Binding WorkshopTypes}"
-                	        SelectedItem="{Binding WorkshopTypes}"
-                	        Title="{i18n:Translate MotorcycleTypePlaceHolder}"/>
+                	        SelectedItem="{Binding WorkshopType}"
+                	        Title="{i18n:Translate WorkshopTypePlaceHolder}"/>
 
                         <Label
                 	        Grid.Column="0"
                 	        Grid.Row="3"
                 	        Text="{i18n:Translate Description}"
                 	        VerticalOptions="Center"/>
-                        <Entry
+                        <Editor
                 	        Grid.Column="1"
                 	        Grid.Row="3"
-                	        Placeholder="{i18n:Translate BrandPlaceHolder}"
-                	        Text="{Binding History.Description}"/>                        
+                	        HeightRequest="80"              	        
+                	        Text="{Binding History.Description}"/>
                     </Grid>
                 </StackLayout>
                 <busyindicator:SfBusyIndicator  
@@ -81,9 +81,16 @@
                     Title="{i18n:Translate Saving}"
                     VerticalOptions="Center"
                     ViewBoxWidth="80"
-                    ViewBoxHeight="80" />
+                    ViewBoxHeight="80" />                
             </AbsoluteLayout>
         </ScrollView>
-    </StackLayout>
-  
+        <StackLayout
+            Orientation="Horizontal"
+            VerticalOptions="EndAndExpand">
+            <Button
+                Command="{Binding SaveCommand}"
+                IsEnabled="{Binding IsEnabled}"
+                Text="{i18n:Translate Save}"/>            
+        </StackLayout>
+    </StackLayout>  
 </ContentPage>

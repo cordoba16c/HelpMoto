@@ -17,6 +17,7 @@ namespace HelpMoto.Prism.ViewModels
         private readonly INavigationService _navigationService;
         private MotorcycleResponse _motorcycle;
         private ObservableCollection<HistoryItemViewModel> _histories;
+        private DelegateCommand _addHistoryCommand;
 
         public HistoriesPageViewModel(INavigationService navigationService) : base(navigationService)
         {
@@ -25,6 +26,8 @@ namespace HelpMoto.Prism.ViewModels
             Motorcycle = JsonConvert.DeserializeObject<MotorcycleResponse>(Settings.MotorCycle);
             LoadHistories();
         }
+
+        public DelegateCommand AddHistoryCommand => _addHistoryCommand ?? (_addHistoryCommand = new DelegateCommand(AddHistory));
 
         public ObservableCollection<HistoryItemViewModel> Histories
         {
@@ -49,6 +52,11 @@ namespace HelpMoto.Prism.ViewModels
                 Description = h.Description,                
                 Remarks = h.Remarks                
             }).ToList());
+        }
+
+        private async void AddHistory()
+        {
+            await _navigationService.NavigateAsync("HistoryPage");
         }
     }
 }

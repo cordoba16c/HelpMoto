@@ -781,6 +781,15 @@ namespace HelpMoto.Prism.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Select a workshop type...
+        /// </summary>
+        public static string WorkshopTypePlaceHolder {
+            get {
+                return ResourceManager.GetString("WorkshopTypePlaceHolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Yes.
         /// </summary>
         public static string Yes {

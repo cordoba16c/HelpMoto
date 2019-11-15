@@ -360,4 +360,7 @@
   <data name="CreateEditHistoryConfirm" xml:space="preserve">
     <value>L'histoire a été {0} avec succès!</value>
   </data>
+  <data name="WorkshopTypePlaceHolder" xml:space="preserve">
+    <value>Sélectionnez un type datelier ...</value>
+  </data>
 </root>

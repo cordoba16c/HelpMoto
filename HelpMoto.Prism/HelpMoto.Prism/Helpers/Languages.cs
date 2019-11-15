@@ -148,5 +148,7 @@ namespace HelpMoto.Prism.Helpers
         public static string WorkshopTypeError => Resource.WorkshopTypeError;
 
         public static string CreateEditHistoryConfirm => Resource.CreateEditHistoryConfirm;
+
+        public static string WorkshopTypePlaceHolder => Resource.WorkshopTypePlaceHolder;
     }
 }
